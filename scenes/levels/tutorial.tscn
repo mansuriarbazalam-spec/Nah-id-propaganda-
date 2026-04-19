@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctutorial001"]
+[gd_scene load_steps=13 format=3 uid="uid://ctutorial001"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
 [ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccheckpt001" path="res://scenes/objects/checkpoint.tscn" id="5_checkpoint"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/church_column.png" id="6_column"]
 [ext_resource type="FontFile" path="res://assets/fonts/PirataOne.ttf" id="7_pirata"]
+[ext_resource type="Texture2D" path="res://assets/ui/light_falloff.png" id="8_light"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(960, 16)
@@ -305,8 +306,9 @@ color = Color(0.7, 0.55, 0.2, 0.4)
 
 [node name="ExitGlow" type="PointLight2D" parent="LevelExit"]
 color = Color(1.0, 0.82, 0.45, 1)
-energy = 1.2
-texture_scale = 0.4
+energy = 1.8
+texture = ExtResource("8_light")
+texture_scale = 0.9
 
 [node name="ExitLabel" type="Label" parent="LevelExit"]
 offset_left = -28.0

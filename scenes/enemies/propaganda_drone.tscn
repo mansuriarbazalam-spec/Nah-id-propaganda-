@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdrone001"]
+[gd_scene load_steps=4 format=3 uid="uid://cdrone001"]
 
 [ext_resource type="Script" path="res://scripts/enemies/propaganda_drone.gd" id="1_drone"]
+[ext_resource type="Texture2D" path="res://assets/ui/light_falloff.png" id="2_light"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drone"]
 size = Vector2(14, 8)
@@ -14,9 +15,10 @@ script = ExtResource("1_drone")
 scale = Vector2(0.4, 0.4)
 
 [node name="EnemyLight" type="PointLight2D" parent="AnimatedSprite2D"]
-color = Color(0.541, 0.094, 0.094, 1)
-energy = 0.5
-texture_scale = 0.3
+color = Color(1.0, 0.55, 0.2, 1)
+energy = 1.4
+texture = ExtResource("2_light")
+texture_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_drone")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://csoldier001"]
+[gd_scene load_steps=4 format=3 uid="uid://csoldier001"]
 
 [ext_resource type="Script" path="res://scripts/enemies/propaganda_soldier.gd" id="1_soldier"]
+[ext_resource type="Texture2D" path="res://assets/ui/light_falloff.png" id="2_light"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soldier"]
 size = Vector2(12, 20)
@@ -15,9 +16,10 @@ position = Vector2(0, -4)
 scale = Vector2(0.45, 0.45)
 
 [node name="EnemyLight" type="PointLight2D" parent="AnimatedSprite2D"]
-color = Color(0.541, 0.094, 0.094, 1)
-energy = 0.5
-texture_scale = 0.3
+color = Color(0.85, 0.15, 0.15, 1)
+energy = 1.2
+texture = ExtResource("2_light")
+texture_scale = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_soldier")
