@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctutorial001"]
+[gd_scene load_steps=24 format=3 uid="uid://ctutorial001"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
 [ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" path="res://assets/props/gothic_window_3.png" id="15_window3"]
 [ext_resource type="Texture2D" path="res://assets/props/gothic_window_5.png" id="16_window5"]
 [ext_resource type="Texture2D" path="res://assets/props/torch_sheet.png" id="17_torch"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/town_ground_b.png" id="18_ground"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/town_top_wood.png" id="19_woodtop"]
+[ext_resource type="Texture2D" path="res://assets/props/bush_large.png" id="20_bush"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(960, 16)
@@ -47,12 +50,14 @@ position = Vector2(480, 254)
 collision_layer = 1
 collision_mask = 0
 
-[node name="GroundVisual" type="ColorRect" parent="Platforms/Ground"]
+[node name="GroundVisual" type="TextureRect" parent="Platforms/Ground"]
 offset_left = -480.0
 offset_top = -8.0
 offset_right = 480.0
-offset_bottom = 8.0
-color = Color(0.22, 0.15, 0.18, 1)
+offset_bottom = 40.0
+texture = ExtResource("18_ground")
+stretch_mode = 1
+modulate = Color(0.85, 0.72, 0.7, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -62,12 +67,14 @@ position = Vector2(200, 214)
 collision_layer = 1
 collision_mask = 0
 
-[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform1"]
+[node name="PlatVisual" type="TextureRect" parent="Platforms/Platform1"]
 offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
-offset_bottom = 4.0
-color = Color(0.28, 0.2, 0.23, 1)
+offset_bottom = 20.0
+texture = ExtResource("18_ground")
+stretch_mode = 1
+modulate = Color(0.9, 0.78, 0.74, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -77,12 +84,14 @@ position = Vector2(340, 200)
 collision_layer = 1
 collision_mask = 0
 
-[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform2"]
+[node name="PlatVisual" type="TextureRect" parent="Platforms/Platform2"]
 offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
-offset_bottom = 4.0
-color = Color(0.28, 0.2, 0.23, 1)
+offset_bottom = 20.0
+texture = ExtResource("18_ground")
+stretch_mode = 1
+modulate = Color(0.9, 0.78, 0.74, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -92,12 +101,14 @@ position = Vector2(500, 218)
 collision_layer = 1
 collision_mask = 0
 
-[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform3"]
+[node name="PlatVisual" type="TextureRect" parent="Platforms/Platform3"]
 offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
-offset_bottom = 4.0
-color = Color(0.28, 0.2, 0.23, 1)
+offset_bottom = 20.0
+texture = ExtResource("18_ground")
+stretch_mode = 1
+modulate = Color(0.9, 0.78, 0.74, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -107,12 +118,14 @@ position = Vector2(680, 210)
 collision_layer = 1
 collision_mask = 0
 
-[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform4"]
+[node name="PlatVisual" type="TextureRect" parent="Platforms/Platform4"]
 offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
-offset_bottom = 4.0
-color = Color(0.28, 0.2, 0.23, 1)
+offset_bottom = 20.0
+texture = ExtResource("18_ground")
+stretch_mode = 1
+modulate = Color(0.9, 0.78, 0.74, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
 shape = SubResource("RectangleShape2D_plat2")

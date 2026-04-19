@@ -6,6 +6,7 @@
 shader = ExtResource("1_shader")
 
 [node name="PostProcess" type="CanvasLayer"]
+process_mode = 3
 layer = 90
 
 [node name="ScreenRect" type="ColorRect" parent="."]
