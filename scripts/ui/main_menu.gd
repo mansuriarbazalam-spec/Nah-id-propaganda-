@@ -48,7 +48,7 @@ func _on_continue_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	var settings_scene := load(SETTINGS_SCENE)
+	var settings_scene: PackedScene = load(SETTINGS_SCENE)
 	if settings_scene:
 		var settings_menu := settings_scene.instantiate()
 		settings_menu.settings_closed.connect(func(): new_game_button.grab_focus())

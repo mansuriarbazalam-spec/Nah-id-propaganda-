@@ -44,14 +44,14 @@ func _on_resume_pressed() -> void:
 
 
 func _on_skill_tree_pressed() -> void:
-	var skill_tree_scene := load(SKILL_TREE_SCENE)
+	var skill_tree_scene: PackedScene = load(SKILL_TREE_SCENE)
 	if skill_tree_scene:
 		var skill_tree := skill_tree_scene.instantiate()
 		add_child(skill_tree)
 
 
 func _on_settings_pressed() -> void:
-	var settings_scene := load(SETTINGS_SCENE)
+	var settings_scene: PackedScene = load(SETTINGS_SCENE)
 	if settings_scene:
 		var settings_menu := settings_scene.instantiate()
 		add_child(settings_menu)
