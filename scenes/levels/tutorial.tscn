@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctutorial001"]
+[gd_scene load_steps=12 format=3 uid="uid://ctutorial001"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
 [ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/objects/npc.tscn" id="4_npc"]
 [ext_resource type="PackedScene" uid="uid://ccheckpt001" path="res://scenes/objects/checkpoint.tscn" id="5_checkpoint"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/church_column.png" id="6_column"]
+[ext_resource type="FontFile" path="res://assets/fonts/PirataOne.ttf" id="7_pirata"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(960, 16)
@@ -180,10 +181,16 @@ shape = SubResource("RectangleShape2D_plat1")
 
 [node name="Label" type="Label" parent="TutorialPrompts/MovePrompt"]
 visible = false
-offset_left = -40.0
-offset_top = -50.0
-offset_right = 40.0
-offset_bottom = -35.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.88, 0.78, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 11
 text = "Press A/D to move"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -198,10 +205,16 @@ shape = SubResource("RectangleShape2D_plat1")
 
 [node name="Label" type="Label" parent="TutorialPrompts/JumpPrompt"]
 visible = false
-offset_left = -40.0
-offset_top = -50.0
-offset_right = 40.0
-offset_bottom = -35.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.88, 0.78, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 11
 text = "Press SPACE to jump"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -216,10 +229,16 @@ shape = SubResource("RectangleShape2D_plat1")
 
 [node name="Label" type="Label" parent="TutorialPrompts/InteractPrompt"]
 visible = false
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = -35.0
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.88, 0.78, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 11
 text = "Press E to interact with NPCs"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -234,11 +253,17 @@ shape = SubResource("RectangleShape2D_plat1")
 
 [node name="Label" type="Label" parent="TutorialPrompts/AttackPrompt"]
 visible = false
-offset_left = -55.0
-offset_top = -50.0
-offset_right = 55.0
-offset_bottom = -35.0
-text = "LMB/J = Melee  RMB/K = Ranged"
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.88, 0.78, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 11
+text = "LMB/J = Melee   RMB/K = Ranged"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -252,10 +277,16 @@ shape = SubResource("RectangleShape2D_plat1")
 
 [node name="Label" type="Label" parent="TutorialPrompts/ShieldPrompt"]
 visible = false
-offset_left = -60.0
-offset_top = -50.0
-offset_right = 60.0
-offset_bottom = -35.0
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.88, 0.78, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 11
 text = "Hold SHIFT for Clarity Shield"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -278,11 +309,17 @@ energy = 1.2
 texture_scale = 0.4
 
 [node name="ExitLabel" type="Label" parent="LevelExit"]
-offset_left = -16.0
-offset_top = -26.0
-offset_right = 16.0
-offset_bottom = -16.0
-text = "EXIT"
+offset_left = -28.0
+offset_top = -34.0
+offset_right = 28.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(1.0, 0.82, 0.45, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("7_pirata")
+theme_override_font_sizes/font_size = 12
+text = "ESCAPE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
