@@ -69,7 +69,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("3_cinzel")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 14
 text = "SANITY"
 
 [node name="SanityLabel" type="Label" parent="MarginContainer/TopLeft"]
@@ -80,7 +80,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("2_pirata")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "100 / 100"
 
 [node name="SanityBar" type="ProgressBar" parent="MarginContainer/TopLeft"]
@@ -101,7 +101,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("2_pirata")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 14
 text = "SHIELD: READY"
 
 [node name="TopRight" type="VBoxContainer" parent="MarginContainer"]
@@ -117,7 +117,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("2_pirata")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Melee"
 horizontal_alignment = 2
 
@@ -136,7 +136,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("2_pirata")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 19
 text = "BOSS NAME"
 horizontal_alignment = 1
 

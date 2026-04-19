@@ -30,7 +30,7 @@ offset_top = 270.0
 offset_bottom = 570.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.9, 0.88, 0.92, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "NAH AD PROPAGANDA
 
 

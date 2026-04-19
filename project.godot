@@ -87,4 +87,5 @@ gdscript/warnings/shadowed_variable=0
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=1
+environment/defaults/default_clear_color=Color(0.06, 0.04, 0.08, 1)

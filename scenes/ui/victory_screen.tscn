@@ -96,7 +96,7 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_unifraktur")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 102
 text = "Victory"
 horizontal_alignment = 1
 
@@ -122,7 +122,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("6_cinzel")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "The lieutenant falls. More wait beyond."
 horizontal_alignment = 1
 
@@ -134,7 +134,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("6_cinzel")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 21
 text = "Your mind remains clear."
 horizontal_alignment = 1
 
@@ -152,7 +152,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_unifraktur")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 38
 text = "Demo Complete"
 horizontal_alignment = 1
 
@@ -164,7 +164,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("6_cinzel")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 19
 text = "The fight for freedom continues."
 horizontal_alignment = 1
 
@@ -183,7 +183,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 36)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Return to Menu"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
@@ -191,7 +191,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 36)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Quit"
 
 [node name="PostProcess" parent="." instance=ExtResource("7_post_process")]

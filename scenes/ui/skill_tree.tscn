@@ -29,14 +29,14 @@ theme_override_constants/separation = 4
 [node name="TitleLabel" type="Label" parent="Background/MainVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.85, 0.4, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 19
 text = "SKILL TREE"
 horizontal_alignment = 1
 
 [node name="PointsLabel" type="Label" parent="Background/MainVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Skill Points: 0"
 horizontal_alignment = 1
 
@@ -57,7 +57,7 @@ theme_override_constants/separation = 3
 [node name="CombatHeader" type="Label" parent="Background/MainVBox/ColumnsHBox/CombatColumn"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.5, 0.4, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "COMBAT"
 horizontal_alignment = 1
 
@@ -69,7 +69,7 @@ theme_override_constants/separation = 3
 [node name="SanityHeader" type="Label" parent="Background/MainVBox/ColumnsHBox/SanityColumn"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "SANITY"
 horizontal_alignment = 1
 
@@ -81,7 +81,7 @@ theme_override_constants/separation = 3
 [node name="ShieldHeader" type="Label" parent="Background/MainVBox/ColumnsHBox/ShieldColumn"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 1, 0.6, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "SHIELD"
 horizontal_alignment = 1
 
@@ -95,7 +95,7 @@ custom_minimum_size = Vector2(0, 36)
 [node name="DescriptionLabel" type="Label" parent="Background/MainVBox/DescriptionPanel"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 11
 text = "Select a skill to see its description."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,12 +109,12 @@ theme_override_constants/separation = 20
 [node name="UnlockButton" type="Button" parent="Background/MainVBox/ButtonsHBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(100, 18)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Unlock"
 disabled = true
 
 [node name="BackButton" type="Button" parent="Background/MainVBox/ButtonsHBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(100, 18)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Back"

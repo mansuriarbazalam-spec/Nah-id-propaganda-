@@ -96,7 +96,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_unifraktur")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 64
 text = "Nah Ad Propaganda"
 horizontal_alignment = 1
 
@@ -121,7 +121,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("6_cinzel")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 22
 text = "Reclaim Your Mind"
 horizontal_alignment = 1
 
@@ -145,7 +145,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "New Game"
 
 [node name="ContinueButton" type="Button" parent="MenuAnchor/ButtonColumn"]
@@ -153,7 +153,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Continue"
 
 [node name="SettingsButton" type="Button" parent="MenuAnchor/ButtonColumn"]
@@ -161,7 +161,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="MenuAnchor/ButtonColumn"]
@@ -169,7 +169,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="MenuAnchor/ButtonColumn"]
@@ -177,7 +177,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Quit"
 
 [node name="FooterLabel" type="Label" parent="."]
@@ -192,7 +192,7 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.55, 0.5, 0.44, 0.8)
 theme_override_fonts/font = ExtResource("6_cinzel")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "v0.1  —  a pilgrimage against propaganda"
 horizontal_alignment = 1
 

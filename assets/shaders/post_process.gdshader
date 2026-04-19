@@ -7,26 +7,27 @@ shader_type canvas_item;
 uniform sampler2D screen_tex : hint_screen_texture, repeat_disable, filter_linear_mipmap;
 
 // --- Vignette ---------------------------------------------------------
-uniform float vignette_intensity : hint_range(0.0, 2.0) = 1.15;
-uniform float vignette_softness  : hint_range(0.0, 1.0) = 0.55;
-uniform vec3  vignette_color     : source_color = vec3(0.02, 0.01, 0.015);
+uniform float vignette_intensity : hint_range(0.0, 2.0) = 0.45;
+uniform float vignette_softness  : hint_range(0.0, 1.0) = 0.85;
+uniform vec3  vignette_color     : source_color = vec3(0.05, 0.03, 0.04);
 
 // --- Chromatic aberration --------------------------------------------
-uniform float chromatic_aberration : hint_range(0.0, 0.02) = 0.0025;
+uniform float chromatic_aberration : hint_range(0.0, 0.02) = 0.0018;
 
 // --- Film grain -------------------------------------------------------
-uniform float grain_strength : hint_range(0.0, 0.5) = 0.08;
+uniform float grain_strength : hint_range(0.0, 0.5) = 0.04;
 uniform float grain_speed    : hint_range(0.0, 10.0) = 2.0;
 
 // --- Color grading ----------------------------------------------------
-uniform float black_crush    : hint_range(0.0, 0.5) = 0.06;
+uniform float black_crush    : hint_range(0.0, 0.5) = 0.0;
 uniform float highlight_warm : hint_range(0.0, 1.0) = 0.25;
-uniform float shadow_cool    : hint_range(0.0, 1.0) = 0.30;
-uniform float saturation     : hint_range(0.0, 2.0) = 0.82;
-uniform float contrast       : hint_range(0.5, 2.0) = 1.15;
+uniform float shadow_cool    : hint_range(0.0, 1.0) = 0.15;
+uniform float saturation     : hint_range(0.0, 2.0) = 1.15;
+uniform float contrast       : hint_range(0.5, 2.0) = 1.08;
+uniform float brightness_boost : hint_range(0.0, 1.0) = 0.08;
 
 // --- Scanlines (subtle) ----------------------------------------------
-uniform float scanline_strength : hint_range(0.0, 0.5) = 0.04;
+uniform float scanline_strength : hint_range(0.0, 0.5) = 0.0;
 uniform float scanline_density  : hint_range(50.0, 600.0) = 320.0;
 
 // Pseudo-random noise for grain
@@ -56,8 +57,14 @@ void fragment() {
 	col = mix(col, col * cool_tint, shadow_mask * shadow_cool);
 	col = mix(col, col * warm_tint, highlight_mask * highlight_warm);
 
-	// Black crush (deepen the darks)
-	col = max(col - black_crush, vec3(0.0)) / (1.0 - black_crush);
+	// Black crush (deepen the darks) — zero by default now so we don't
+	// double-darken the gothic palette
+	if (black_crush > 0.001) {
+		col = max(col - black_crush, vec3(0.0)) / (1.0 - black_crush);
+	}
+
+	// Brightness lift
+	col += brightness_boost;
 
 	// Contrast
 	col = (col - 0.5) * contrast + 0.5;

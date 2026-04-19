@@ -71,7 +71,7 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_unifraktur")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 128
 text = "You Died"
 horizontal_alignment = 1
 
@@ -96,7 +96,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_cinzel")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 29
 text = "Sanity reclaimed you."
 horizontal_alignment = 1
 
@@ -109,7 +109,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 36)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Restart"
 
 [node name="QuitToMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -117,7 +117,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 36)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "Return to Menu"
 
 [node name="PostProcess" parent="." instance=ExtResource("6_post_process")]

@@ -37,7 +37,7 @@ theme_override_constants/separation = 4
 [node name="TitleLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.15, 0.15, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 26
 text = "SETTINGS"
 horizontal_alignment = 1
 
@@ -48,7 +48,7 @@ custom_minimum_size = Vector2(0, 4)
 [node name="AudioHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "— Audio —"
 horizontal_alignment = 1
 
@@ -59,7 +59,7 @@ theme_override_constants/separation = 4
 [node name="MasterLabel" type="Label" parent="ScrollContainer/VBoxContainer/MasterRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(80, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MasterRow"]
@@ -75,7 +75,7 @@ value = 80.0
 unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(24, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "80"
 horizontal_alignment = 2
 
@@ -86,7 +86,7 @@ theme_override_constants/separation = 4
 [node name="MusicLabel" type="Label" parent="ScrollContainer/VBoxContainer/MusicRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(80, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MusicRow"]
@@ -102,7 +102,7 @@ value = 70.0
 unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(24, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "70"
 horizontal_alignment = 2
 
@@ -113,7 +113,7 @@ theme_override_constants/separation = 4
 [node name="SFXLabel" type="Label" parent="ScrollContainer/VBoxContainer/SFXRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(80, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/SFXRow"]
@@ -129,7 +129,7 @@ value = 100.0
 unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(24, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "100"
 horizontal_alignment = 2
 
@@ -140,7 +140,7 @@ custom_minimum_size = Vector2(0, 4)
 [node name="DisplayHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "— Display —"
 horizontal_alignment = 1
 
@@ -150,7 +150,7 @@ layout_mode = 2
 [node name="FullscreenLabel" type="Label" parent="ScrollContainer/VBoxContainer/FullscreenRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Fullscreen"
 
 [node name="FullscreenToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/FullscreenRow"]
@@ -163,7 +163,7 @@ layout_mode = 2
 [node name="VSyncLabel" type="Label" parent="ScrollContainer/VBoxContainer/VSyncRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "VSync"
 
 [node name="VSyncToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/VSyncRow"]
@@ -177,7 +177,7 @@ layout_mode = 2
 [node name="ShakeLabel" type="Label" parent="ScrollContainer/VBoxContainer/ShakeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 13
 text = "Screen Shake"
 
 [node name="ScreenShakeToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/ShakeRow"]
@@ -192,14 +192,14 @@ custom_minimum_size = Vector2(0, 4)
 [node name="ControlsHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "— Controls —"
 horizontal_alignment = 1
 
 [node name="ControlsList" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.65, 0.75, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 11
 text = "Move .............. A / D
 Jump .............. Space
 Melee Attack ...... LMB / J
@@ -218,5 +218,5 @@ unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(100, 20)
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Back"

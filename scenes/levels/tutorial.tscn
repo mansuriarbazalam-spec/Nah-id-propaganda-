@@ -38,7 +38,7 @@ offset_left = -48.0
 offset_top = -270.0
 offset_right = 960.0
 offset_bottom = 270.0
-color = Color(0.03, 0.02, 0.04, 1)
+color = Color(0.11, 0.05, 0.08, 1)
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -52,7 +52,7 @@ offset_left = -480.0
 offset_top = -8.0
 offset_right = 480.0
 offset_bottom = 8.0
-color = Color(0.09, 0.06, 0.09, 1)
+color = Color(0.22, 0.15, 0.18, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -67,7 +67,7 @@ offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
 offset_bottom = 4.0
-color = Color(0.14, 0.09, 0.12, 1)
+color = Color(0.28, 0.2, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -82,7 +82,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.14, 0.09, 0.12, 1)
+color = Color(0.28, 0.2, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -97,7 +97,7 @@ offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
 offset_bottom = 4.0
-color = Color(0.14, 0.09, 0.12, 1)
+color = Color(0.28, 0.2, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -112,7 +112,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.14, 0.09, 0.12, 1)
+color = Color(0.28, 0.2, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -149,75 +149,75 @@ texture = ExtResource("15_window3")
 [node name="TreeLeft" type="Sprite2D" parent="Decorations"]
 position = Vector2(-20, 195)
 scale = Vector2(0.55, 0.55)
-modulate = Color(0.25, 0.18, 0.22, 1)
+modulate = Color(0.55, 0.4, 0.45, 1)
 texture = ExtResource("14_tree3")
 
 [node name="TreeMid" type="Sprite2D" parent="Decorations"]
 position = Vector2(420, 200)
 scale = Vector2(0.45, 0.45)
-modulate = Color(0.22, 0.15, 0.2, 1)
+modulate = Color(0.5, 0.35, 0.42, 1)
 texture = ExtResource("13_tree2")
 
 [node name="TreeRight" type="Sprite2D" parent="Decorations"]
 position = Vector2(900, 195)
 scale = Vector2(0.55, 0.55)
-modulate = Color(0.25, 0.18, 0.22, 1)
+modulate = Color(0.55, 0.4, 0.45, 1)
 texture = ExtResource("14_tree3")
 
 [node name="Column1" type="Sprite2D" parent="Decorations"]
 position = Vector2(95, 150)
 scale = Vector2(0.5, 0.6)
-modulate = Color(0.45, 0.35, 0.4, 1)
+modulate = Color(0.75, 0.62, 0.68, 1)
 texture = ExtResource("6_column")
 
 [node name="Column2" type="Sprite2D" parent="Decorations"]
 position = Vector2(300, 150)
 scale = Vector2(0.5, 0.6)
-modulate = Color(0.38, 0.28, 0.33, 1)
+modulate = Color(0.68, 0.55, 0.6, 1)
 texture = ExtResource("6_column")
 
 [node name="Column3" type="Sprite2D" parent="Decorations"]
 position = Vector2(600, 150)
 scale = Vector2(0.5, 0.6)
-modulate = Color(0.45, 0.35, 0.4, 1)
+modulate = Color(0.75, 0.62, 0.68, 1)
 texture = ExtResource("6_column")
 
 [node name="Column4" type="Sprite2D" parent="Decorations"]
 position = Vector2(850, 150)
 scale = Vector2(0.5, 0.6)
-modulate = Color(0.38, 0.28, 0.33, 1)
+modulate = Color(0.68, 0.55, 0.6, 1)
 texture = ExtResource("6_column")
 
 [node name="Statue1" type="Sprite2D" parent="Decorations"]
 position = Vector2(230, 208)
 scale = Vector2(0.9, 0.9)
-modulate = Color(0.55, 0.5, 0.55, 1)
+modulate = Color(0.88, 0.82, 0.82, 1)
 texture = ExtResource("9_statue")
 
 [node name="Statue2" type="Sprite2D" parent="Decorations"]
 position = Vector2(740, 208)
 scale = Vector2(0.9, 0.9)
-modulate = Color(0.55, 0.5, 0.55, 1)
+modulate = Color(0.88, 0.82, 0.82, 1)
 texture = ExtResource("9_statue")
 
 [node name="Tomb1" type="Sprite2D" parent="Decorations"]
 position = Vector2(120, 234)
-modulate = Color(0.55, 0.5, 0.55, 1)
+modulate = Color(0.88, 0.82, 0.82, 1)
 texture = ExtResource("10_tomb1")
 
 [node name="Tomb2" type="Sprite2D" parent="Decorations"]
 position = Vector2(380, 234)
-modulate = Color(0.5, 0.45, 0.5, 1)
+modulate = Color(0.82, 0.76, 0.78, 1)
 texture = ExtResource("11_tomb2")
 
 [node name="Tomb3" type="Sprite2D" parent="Decorations"]
 position = Vector2(670, 234)
-modulate = Color(0.55, 0.5, 0.55, 1)
+modulate = Color(0.88, 0.82, 0.82, 1)
 texture = ExtResource("12_tomb3")
 
 [node name="Tomb4" type="Sprite2D" parent="Decorations"]
 position = Vector2(870, 234)
-modulate = Color(0.5, 0.45, 0.5, 1)
+modulate = Color(0.82, 0.76, 0.78, 1)
 texture = ExtResource("10_tomb1")
 
 [node name="Torch1" type="AnimatedSprite2D" parent="Decorations"]
