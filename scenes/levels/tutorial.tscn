@@ -1,0 +1,258 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctutorial001"]
+
+[ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
+[ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
+[ext_resource type="PackedScene" uid="uid://cmachine001" path="res://scenes/objects/propaganda_machine.tscn" id="3_machine"]
+[ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/objects/npc.tscn" id="4_npc"]
+[ext_resource type="PackedScene" uid="uid://ccheckpt001" path="res://scenes/objects/checkpoint.tscn" id="5_checkpoint"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(960, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat1"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat2"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(16, 32)
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_tutorial")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -48.0
+offset_top = -270.0
+offset_right = 960.0
+offset_bottom = 270.0
+color = Color(0.06, 0.05, 0.1, 1)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+position = Vector2(480, 254)
+collision_layer = 1
+collision_mask = 0
+
+[node name="GroundVisual" type="ColorRect" parent="Platforms/Ground"]
+offset_left = -480.0
+offset_top = -8.0
+offset_right = 480.0
+offset_bottom = 8.0
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(200, 214)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform1"]
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 4.0
+color = Color(0.22, 0.22, 0.28, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(340, 200)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform2"]
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 4.0
+color = Color(0.22, 0.22, 0.28, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
+shape = SubResource("RectangleShape2D_plat2")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(500, 218)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform3"]
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 32.0
+offset_bottom = 4.0
+color = Color(0.22, 0.22, 0.28, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms"]
+position = Vector2(680, 210)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/Platform4"]
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 4.0
+color = Color(0.22, 0.22, 0.28, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
+shape = SubResource("RectangleShape2D_plat2")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(40, 230)
+
+[node name="CameraLimitMin" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="CameraLimitMax" type="Marker2D" parent="."]
+position = Vector2(960, 270)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Soldier1" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(400, 240)
+
+[node name="Soldier2" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(700, 240)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Checkpoint1" parent="Objects" instance=ExtResource("5_checkpoint")]
+position = Vector2(40, 246)
+checkpoint_id = "tutorial_start"
+
+[node name="Checkpoint2" parent="Objects" instance=ExtResource("5_checkpoint")]
+position = Vector2(460, 246)
+checkpoint_id = "tutorial_mid"
+
+[node name="Machine1" parent="Objects" instance=ExtResource("3_machine")]
+position = Vector2(560, 238)
+
+[node name="NPC1" parent="Objects" instance=ExtResource("4_npc")]
+position = Vector2(140, 240)
+
+[node name="NPC2" parent="Objects" instance=ExtResource("4_npc")]
+position = Vector2(620, 240)
+
+[node name="TutorialPrompts" type="Node2D" parent="."]
+
+[node name="MovePrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(60, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="PromptShape" type="CollisionShape2D" parent="TutorialPrompts/MovePrompt"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Label" type="Label" parent="TutorialPrompts/MovePrompt"]
+visible = false
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -35.0
+text = "Press A/D to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JumpPrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(160, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="PromptShape" type="CollisionShape2D" parent="TutorialPrompts/JumpPrompt"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Label" type="Label" parent="TutorialPrompts/JumpPrompt"]
+visible = false
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -35.0
+text = "Press SPACE to jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractPrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(140, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="PromptShape" type="CollisionShape2D" parent="TutorialPrompts/InteractPrompt"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Label" type="Label" parent="TutorialPrompts/InteractPrompt"]
+visible = false
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -35.0
+text = "Press E to interact with NPCs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackPrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(300, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="PromptShape" type="CollisionShape2D" parent="TutorialPrompts/AttackPrompt"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Label" type="Label" parent="TutorialPrompts/AttackPrompt"]
+visible = false
+offset_left = -55.0
+offset_top = -50.0
+offset_right = 55.0
+offset_bottom = -35.0
+text = "LMB/J = Melee  RMB/K = Ranged"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShieldPrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(520, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="PromptShape" type="CollisionShape2D" parent="TutorialPrompts/ShieldPrompt"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Label" type="Label" parent="TutorialPrompts/ShieldPrompt"]
+visible = false
+offset_left = -60.0
+offset_top = -50.0
+offset_right = 60.0
+offset_bottom = -35.0
+text = "Hold SHIFT for Clarity Shield"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelExit" type="Area2D" parent="."]
+position = Vector2(920, 238)
+collision_layer = 0
+collision_mask = 2
+
+[node name="ExitVisual" type="ColorRect" parent="LevelExit"]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = 16.0
+color = Color(0.2, 0.8, 0.4, 1)
+
+[node name="ExitLabel" type="Label" parent="LevelExit"]
+offset_left = -16.0
+offset_top = -26.0
+offset_right = 16.0
+offset_bottom = -16.0
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = SubResource("RectangleShape2D_exit")

@@ -1,0 +1,308 @@
+[gd_scene load_steps=14 format=3 uid="uid://clevel01001"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_01.gd" id="1_level01"]
+[ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
+[ext_resource type="PackedScene" uid="uid://cdrone001" path="res://scenes/enemies/propaganda_drone.tscn" id="3_drone"]
+[ext_resource type="PackedScene" uid="uid://cmachine001" path="res://scenes/objects/propaganda_machine.tscn" id="4_machine"]
+[ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/objects/npc.tscn" id="5_npc"]
+[ext_resource type="PackedScene" uid="uid://ccheckpt001" path="res://scenes/objects/checkpoint.tscn" id="6_checkpoint"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground1"]
+size = Vector2(600, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground2"]
+size = Vector2(500, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat_sm"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat_md"]
+size = Vector2(80, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat_lg"]
+size = Vector2(120, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(8, 48)
+
+[node name="Level01" type="Node2D"]
+script = ExtResource("1_level01")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -48.0
+offset_top = -270.0
+offset_right = 1440.0
+offset_bottom = 300.0
+color = Color(0.04, 0.03, 0.08, 1)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(300, 254)
+collision_layer = 1
+collision_mask = 0
+
+[node name="GroundVisual" type="ColorRect" parent="Platforms/Ground1"]
+offset_left = -300.0
+offset_top = -8.0
+offset_right = 300.0
+offset_bottom = 8.0
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground1"]
+shape = SubResource("RectangleShape2D_ground1")
+
+[node name="Gap" type="Node2D" parent="Platforms"]
+
+[node name="Ground2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(880, 254)
+collision_layer = 1
+collision_mask = 0
+
+[node name="GroundVisual" type="ColorRect" parent="Platforms/Ground2"]
+offset_left = -250.0
+offset_top = -8.0
+offset_right = 250.0
+offset_bottom = 8.0
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground2"]
+shape = SubResource("RectangleShape2D_ground2")
+
+[node name="Ground3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(1320, 254)
+collision_layer = 1
+collision_mask = 0
+
+[node name="GroundVisual" type="ColorRect" parent="Platforms/Ground3"]
+offset_left = -120.0
+offset_top = -8.0
+offset_right = 120.0
+offset_bottom = 8.0
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground3"]
+shape = SubResource("RectangleShape2D_plat_lg")
+
+[node name="UpperPath1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(150, 190)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/UpperPath1"]
+offset_left = -40.0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath1"]
+shape = SubResource("RectangleShape2D_plat_md")
+
+[node name="UpperPath2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(280, 160)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/UpperPath2"]
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath2"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="UpperPath3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(420, 150)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/UpperPath3"]
+offset_left = -60.0
+offset_top = -4.0
+offset_right = 60.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath3"]
+shape = SubResource("RectangleShape2D_plat_lg")
+
+[node name="MidPlatform1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(650, 210)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/MidPlatform1"]
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform1"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="MidPlatform2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(750, 190)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/MidPlatform2"]
+offset_left = -40.0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform2"]
+shape = SubResource("RectangleShape2D_plat_md")
+
+[node name="HighPlatform" type="StaticBody2D" parent="Platforms"]
+position = Vector2(900, 140)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/HighPlatform"]
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.26, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/HighPlatform"]
+shape = SubResource("RectangleShape2D_plat_sm")
+
+[node name="BossLedge" type="StaticBody2D" parent="Platforms"]
+position = Vector2(1200, 220)
+collision_layer = 1
+collision_mask = 0
+
+[node name="PlatVisual" type="ColorRect" parent="Platforms/BossLedge"]
+offset_left = -40.0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 4.0
+color = Color(0.25, 0.15, 0.15, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/BossLedge"]
+shape = SubResource("RectangleShape2D_plat_md")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(40, 230)
+
+[node name="CameraLimitMin" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="CameraLimitMax" type="Marker2D" parent="."]
+position = Vector2(1440, 270)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Soldier1" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(250, 240)
+
+[node name="Soldier2" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(500, 240)
+
+[node name="Soldier3" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(800, 240)
+
+[node name="Soldier4" parent="Enemies" instance=ExtResource("2_soldier")]
+position = Vector2(1050, 240)
+
+[node name="Drone1" parent="Enemies" instance=ExtResource("3_drone")]
+position = Vector2(350, 120)
+
+[node name="Drone2" parent="Enemies" instance=ExtResource("3_drone")]
+position = Vector2(700, 100)
+
+[node name="Drone3" parent="Enemies" instance=ExtResource("3_drone")]
+position = Vector2(1000, 110)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Checkpoint1" parent="Objects" instance=ExtResource("6_checkpoint")]
+position = Vector2(40, 246)
+checkpoint_id = "level01_start"
+
+[node name="Checkpoint2" parent="Objects" instance=ExtResource("6_checkpoint")]
+position = Vector2(450, 246)
+checkpoint_id = "level01_mid1"
+
+[node name="Checkpoint3" parent="Objects" instance=ExtResource("6_checkpoint")]
+position = Vector2(900, 246)
+checkpoint_id = "level01_mid2"
+
+[node name="Machine1" parent="Objects" instance=ExtResource("4_machine")]
+position = Vector2(350, 238)
+
+[node name="Machine2" parent="Objects" instance=ExtResource("4_machine")]
+position = Vector2(750, 238)
+
+[node name="Machine3" parent="Objects" instance=ExtResource("4_machine")]
+position = Vector2(1100, 238)
+
+[node name="NPC1" parent="Objects" instance=ExtResource("5_npc")]
+position = Vector2(180, 240)
+
+[node name="NPC2" parent="Objects" instance=ExtResource("5_npc")]
+position = Vector2(550, 240)
+
+[node name="NPC3" parent="Objects" instance=ExtResource("5_npc")]
+position = Vector2(850, 240)
+
+[node name="BossArena" type="Node2D" parent="."]
+
+[node name="BossTrigger" type="Area2D" parent="BossArena"]
+position = Vector2(1180, 238)
+collision_layer = 0
+collision_mask = 2
+
+[node name="TriggerShape" type="CollisionShape2D" parent="BossArena/BossTrigger"]
+shape = SubResource("RectangleShape2D_exit")
+
+[node name="ArenaDoor" type="StaticBody2D" parent="BossArena"]
+visible = false
+position = Vector2(1170, 230)
+collision_layer = 1
+collision_mask = 0
+
+[node name="DoorVisual" type="ColorRect" parent="BossArena/ArenaDoor"]
+offset_left = -4.0
+offset_top = -24.0
+offset_right = 4.0
+offset_bottom = 24.0
+color = Color(0.5, 0.15, 0.15, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossArena/ArenaDoor"]
+disabled = true
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="LevelExit" type="Area2D" parent="."]
+position = Vector2(1400, 238)
+collision_layer = 0
+collision_mask = 2
+
+[node name="ExitVisual" type="ColorRect" parent="LevelExit"]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = 16.0
+color = Color(0.2, 0.8, 0.4, 1)
+
+[node name="ExitLabel" type="Label" parent="LevelExit"]
+offset_left = -16.0
+offset_top = -26.0
+offset_right = 16.0
+offset_bottom = -16.0
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = SubResource("RectangleShape2D_exit")

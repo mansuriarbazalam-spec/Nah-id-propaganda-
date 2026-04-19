@@ -1,0 +1,222 @@
+[gd_scene load_steps=2 format=3 uid="uid://settings_menu_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/settings_menu.gd" id="1_settings"]
+
+[node name="SettingsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_settings")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.06, 0.95)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 16
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="AudioHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 10
+text = "— Audio —"
+horizontal_alignment = 1
+
+[node name="MasterRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MasterLabel" type="Label" parent="ScrollContainer/VBoxContainer/MasterRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+theme_override_font_sizes/font_size = 8
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MasterRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="MasterValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/MasterRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(24, 0)
+theme_override_font_sizes/font_size = 8
+text = "80"
+horizontal_alignment = 2
+
+[node name="MusicRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MusicLabel" type="Label" parent="ScrollContainer/VBoxContainer/MusicRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+theme_override_font_sizes/font_size = 8
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/MusicRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 70.0
+
+[node name="MusicValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/MusicRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(24, 0)
+theme_override_font_sizes/font_size = 8
+text = "70"
+horizontal_alignment = 2
+
+[node name="SFXRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SFXLabel" type="Label" parent="ScrollContainer/VBoxContainer/SFXRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+theme_override_font_sizes/font_size = 8
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/SFXRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="SFXValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/SFXRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(24, 0)
+theme_override_font_sizes/font_size = 8
+text = "100"
+horizontal_alignment = 2
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="DisplayHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 10
+text = "— Display —"
+horizontal_alignment = 1
+
+[node name="FullscreenRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="ScrollContainer/VBoxContainer/FullscreenRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+theme_override_font_sizes/font_size = 8
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/FullscreenRow"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSyncRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSyncLabel" type="Label" parent="ScrollContainer/VBoxContainer/VSyncRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+theme_override_font_sizes/font_size = 8
+text = "VSync"
+
+[node name="VSyncToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/VSyncRow"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
+[node name="ShakeRow" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ShakeLabel" type="Label" parent="ScrollContainer/VBoxContainer/ShakeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+theme_override_font_sizes/font_size = 8
+text = "Screen Shake"
+
+[node name="ScreenShakeToggle" type="CheckButton" parent="ScrollContainer/VBoxContainer/ShakeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="ControlsHeader" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 10
+text = "— Controls —"
+horizontal_alignment = 1
+
+[node name="ControlsList" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.65, 0.75, 1)
+theme_override_font_sizes/font_size = 7
+text = "Move .............. A / D
+Jump .............. Space
+Melee Attack ...... LMB / J
+Ranged Attack ..... RMB / K
+Shield ............ Shift
+Interact .......... E
+Pause ............. Esc"
+horizontal_alignment = 1
+
+[node name="Spacer4" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 6)
+
+[node name="BackButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(100, 20)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "Back"

@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://credits_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_credits"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_credits")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.02, 0.05, 1)
+
+[node name="CreditsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+offset_top = 270.0
+offset_bottom = 570.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 10
+text = "NAH AD PROPAGANDA
+
+
+A Game About Reclaiming Your Mind
+
+
+- - -
+
+
+Game Design & Development
+[Your Name Here]
+
+
+Built with Godot Engine 4
+
+
+- - -
+
+
+\"In a world of propaganda,
+clarity is the ultimate weapon.\"
+
+
+- - -
+
+
+Press any key to return"
+horizontal_alignment = 1
+autowrap_mode = 2

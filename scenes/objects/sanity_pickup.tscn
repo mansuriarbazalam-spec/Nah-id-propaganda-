@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://sanity_pickup_001"]
+
+[ext_resource type="Script" path="res://scripts/objects/sanity_pickup.gd" id="1_sanity_pickup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 6.0
+
+[node name="SanityPickup" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_sanity_pickup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Glow" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0.1, 0.9, 0.7, 0.3)
+
+[node name="Orb" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+color = Color(0.2, 1.0, 0.8, 1)
+
+[node name="Core" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0.8, 1.0, 0.95, 1)

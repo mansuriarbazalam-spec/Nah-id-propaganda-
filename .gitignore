@@ -1,0 +1,25 @@
+# Godot 4 specific ignores
+.godot/
+
+# Exported builds
+export/
+build/
+
+# Import cache
+.import/
+
+# Mono/.NET
+.mono/
+data_*/
+mono_crash.*.json
+
+# OS-specific
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace

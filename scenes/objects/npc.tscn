@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnpc001"]
+
+[ext_resource type="Script" path="res://scripts/objects/npc.gd" id="1_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(30, 24)
+
+[node name="NPC" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_npc")
+
+[node name="BodyVisual" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -10.0
+offset_right = 5.0
+offset_bottom = 10.0
+color = Color(0.5, 0.45, 0.45, 1)
+
+[node name="Head" type="ColorRect" parent="BodyVisual"]
+offset_left = 0.0
+offset_top = -5.0
+offset_right = 8.0
+offset_bottom = 0.0
+color = Color(0.6, 0.55, 0.5, 1)
+
+[node name="SloganLabel" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -24.0
+offset_right = 50.0
+offset_bottom = -12.0
+text = "THE LEADER KNOWS BEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractPrompt" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = 12.0
+offset_right = 20.0
+offset_bottom = 22.0
+text = "[E] Deprogram"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+offset_bottom = -26.0
+max_value = 3.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractShape" type="CollisionShape2D" parent="InteractZone"]
+shape = SubResource("RectangleShape2D_interact")

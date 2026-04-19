@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqbomb001"]
+
+[ext_resource type="Script" path="res://scripts/enemies/propaganda_bomb.gd" id="1_bomb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bomb"]
+radius = 4.0
+
+[node name="PropagandaBomb" type="Area2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_bomb")
+
+[node name="BombVisual" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+color = Color(0.7, 0.15, 0.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bomb")

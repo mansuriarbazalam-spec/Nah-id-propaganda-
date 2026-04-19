@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbosslt001"]
+
+[ext_resource type="Script" path="res://scripts/enemies/boss_lieutenant.gd" id="1_boss_lt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(18, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
+size = Vector2(20, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_contact"]
+size = Vector2(22, 40)
+
+[node name="BossLieutenant" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_boss_lt")
+boss_name = "The Propaganda Lieutenant"
+max_health = 300.0
+contact_damage = 15.0
+
+[node name="BossVisual" type="Node2D" parent="."]
+
+[node name="Body" type="ColorRect" parent="BossVisual"]
+offset_left = -9.0
+offset_top = -18.0
+offset_right = 9.0
+offset_bottom = 18.0
+color = Color(0.15, 0.12, 0.18, 1)
+
+[node name="Hat" type="ColorRect" parent="BossVisual"]
+offset_left = -10.0
+offset_top = -26.0
+offset_right = 10.0
+offset_bottom = -18.0
+color = Color(0.2, 0.15, 0.1, 1)
+
+[node name="HatBrim" type="ColorRect" parent="BossVisual"]
+offset_left = -12.0
+offset_top = -19.0
+offset_right = 12.0
+offset_bottom = -18.0
+color = Color(0.25, 0.18, 0.12, 1)
+
+[node name="Insignia" type="ColorRect" parent="BossVisual"]
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = -2.0
+color = Color(0.85, 0.15, 0.1, 1)
+
+[node name="GoldTrimLeft" type="ColorRect" parent="BossVisual"]
+offset_left = -9.0
+offset_top = -16.0
+offset_right = -8.0
+offset_bottom = 16.0
+color = Color(0.85, 0.7, 0.2, 1)
+
+[node name="GoldTrimRight" type="ColorRect" parent="BossVisual"]
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 9.0
+offset_bottom = 16.0
+color = Color(0.85, 0.7, 0.2, 1)
+
+[node name="Epaulette_L" type="ColorRect" parent="BossVisual"]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = -8.0
+offset_bottom = -14.0
+color = Color(0.9, 0.75, 0.2, 1)
+
+[node name="Epaulette_R" type="ColorRect" parent="BossVisual"]
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = -14.0
+color = Color(0.9, 0.75, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_hurtbox")
+
+[node name="ContactDamageArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="ContactShape" type="CollisionShape2D" parent="ContactDamageArea"]
+shape = SubResource("RectangleShape2D_contact")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DialogueLabel" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -42.0
+offset_right = 60.0
+offset_bottom = -28.0
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 6
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

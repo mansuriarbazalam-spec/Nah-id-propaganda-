@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5deatheff01"]
+
+[ext_resource type="Script" path="res://scripts/effects/death_effect.gd" id="1_death"]
+
+[sub_resource type="Gradient" id="Gradient_death"]
+colors = PackedColorArray(0.6, 0.1, 0.15, 1, 0.15, 0.05, 0.08, 0)
+
+[node name="DeathEffect" type="Node2D"]
+z_index = 5
+script = ExtResource("1_death")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 40)
+initial_velocity_min = 30.0
+initial_velocity_max = 70.0
+scale_amount_min = 1.0
+scale_amount_max = 3.0
+color = Color(0.4, 0.08, 0.1, 1)
+color_ramp = SubResource("Gradient_death")
