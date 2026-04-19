@@ -1,86 +1,123 @@
-[gd_scene load_steps=5 format=3 uid="uid://parallax_city_001"]
+[gd_scene load_steps=11 format=3 uid="uid://parallax_city_001"]
 
 [ext_resource type="Script" path="res://scripts/levels/parallax_city.gd" id="1_parallax"]
-[ext_resource type="Texture2D" uid="uid://cqwukhn5op1wv" path="res://assets/backgrounds/town_bg_far.png" id="2_far"]
-[ext_resource type="Texture2D" uid="uid://kut01vywkds0" path="res://assets/backgrounds/town_bg_mid.png" id="3_mid"]
-[ext_resource type="Texture2D" uid="uid://dgbs4shafmvny" path="res://assets/backgrounds/castle_bg.png" id="4_castle"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/sky/mountains_far.png" id="2_mountains"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/interior_parallax_2.png" id="3_arch_far"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/interior_parallax_1.png" id="4_arch_mid"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/church_bg.png" id="5_church"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/cemetery_graveyard.png" id="6_graveyard"]
+[ext_resource type="Texture2D" path="res://assets/props/gothic_window_1.png" id="7_window"]
+
+[sub_resource type="Gradient" id="Gradient_sky"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0.05, 0.03, 0.08, 1, 0.16, 0.05, 0.07, 1, 0.26, 0.09, 0.08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sky"]
+gradient = SubResource("Gradient_sky")
+width = 640
+height = 360
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [node name="ParallaxCity" type="ParallaxBackground"]
 script = ExtResource("1_parallax")
 
 [node name="SkyLayer" type="ParallaxLayer" parent="."]
 
-[node name="SkyTop" type="ColorRect" parent="SkyLayer"]
-offset_right = 480.0
-offset_bottom = 135.0
-color = Color(0.039, 0.031, 0.09, 1)
+[node name="SkyGradient" type="TextureRect" parent="SkyLayer"]
+texture = SubResource("GradientTexture2D_sky")
+offset_right = 640.0
+offset_bottom = 360.0
 
-[node name="SkyBottom" type="ColorRect" parent="SkyLayer"]
-offset_top = 135.0
-offset_right = 480.0
-offset_bottom = 270.0
-color = Color(0.11, 0.063, 0.125, 1)
+[node name="StainedGlass" type="Sprite2D" parent="SkyLayer"]
+modulate = Color(0.65, 0.35, 0.25, 0.55)
+position = Vector2(120, 90)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_window")
 
-[node name="FarLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.15, 1)
-motion_mirroring = Vector2(384, 0)
+[node name="StainedGlass2" type="Sprite2D" parent="SkyLayer"]
+modulate = Color(0.85, 0.55, 0.35, 0.5)
+position = Vector2(540, 90)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_window")
 
-[node name="FarSprite" type="Sprite2D" parent="FarLayer"]
-modulate = Color(0.227, 0.165, 0.212, 1)
-position = Vector2(0, -18)
-texture = ExtResource("2_far")
+[node name="MountainLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.08, 1)
+motion_mirroring = Vector2(270, 0)
+
+[node name="MountainSprite" type="Sprite2D" parent="MountainLayer"]
+modulate = Color(0.4, 0.32, 0.42, 1)
+position = Vector2(0, 180)
+texture = ExtResource("2_mountains")
 centered = false
 
-[node name="MidLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.35, 1)
-motion_mirroring = Vector2(384, 0)
+[node name="ArchFarLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(256, 0)
 
-[node name="MidSprite" type="Sprite2D" parent="MidLayer"]
-modulate = Color(0.29, 0.188, 0.188, 1)
-position = Vector2(0, -18)
-texture = ExtResource("3_mid")
+[node name="ArchFarSprite" type="Sprite2D" parent="ArchFarLayer"]
+modulate = Color(0.55, 0.42, 0.5, 1)
+position = Vector2(0, 40)
+texture = ExtResource("3_arch_far")
 centered = false
 
-[node name="CastleLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(480, 0)
+[node name="ArchMidLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.38, 1)
+motion_mirroring = Vector2(256, 0)
 
-[node name="CastleSprite" type="Sprite2D" parent="CastleLayer"]
-modulate = Color(0.235, 0.141, 0.141, 1)
-position = Vector2(0, -66)
-texture = ExtResource("4_castle")
+[node name="ArchMidSprite" type="Sprite2D" parent="ArchMidLayer"]
+modulate = Color(0.72, 0.55, 0.55, 1)
+position = Vector2(0, 104)
+texture = ExtResource("4_arch_mid")
+centered = false
+
+[node name="ChurchLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.55, 1)
+motion_mirroring = Vector2(624, 0)
+
+[node name="ChurchSprite" type="Sprite2D" parent="ChurchLayer"]
+modulate = Color(0.85, 0.68, 0.55, 1)
+position = Vector2(0, 168)
+texture = ExtResource("5_church")
+centered = false
+
+[node name="GraveyardLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.78, 1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="GraveyardSprite" type="Sprite2D" parent="GraveyardLayer"]
+modulate = Color(0.45, 0.32, 0.32, 1)
+position = Vector2(0, 237)
+texture = ExtResource("6_graveyard")
 centered = false
 
 [node name="FogLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.85, 1)
-motion_mirroring = Vector2(480, 0)
+motion_scale = Vector2(0.9, 1)
 
 [node name="FogStrip" type="ColorRect" parent="FogLayer"]
-offset_left = 0.0
-offset_top = 220.0
-offset_right = 480.0
-offset_bottom = 270.0
-color = Color(0.05, 0.03, 0.06, 0.45)
+offset_top = 280.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.05, 0.03, 0.07, 0.38)
 
 [node name="FogStripDeep" type="ColorRect" parent="FogLayer"]
-offset_left = 0.0
-offset_top = 250.0
-offset_right = 480.0
-offset_bottom = 270.0
-color = Color(0.03, 0.02, 0.04, 0.65)
+offset_top = 330.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.02, 0.01, 0.03, 0.7)
 
 [node name="Embers" type="CPUParticles2D" parent="FogLayer"]
-position = Vector2(240, 260)
-amount = 24
-lifetime = 4.0
-preprocess = 2.0
+position = Vector2(320, 345)
+amount = 40
+lifetime = 5.0
+preprocess = 3.0
 emission_shape = 3
-emission_rect_extents = Vector2(400, 10)
-gravity = Vector2(0, -18)
-initial_velocity_min = 5.0
-initial_velocity_max = 15.0
-angular_velocity_min = -30.0
-angular_velocity_max = 30.0
-scale_amount_min = 0.5
-scale_amount_max = 1.5
-color = Color(1, 0.6, 0.3, 0.6)
+emission_rect_extents = Vector2(520, 12)
+gravity = Vector2(0, -22)
+initial_velocity_min = 6.0
+initial_velocity_max = 18.0
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+scale_amount_min = 0.6
+scale_amount_max = 1.8
+color = Color(1, 0.55, 0.25, 0.7)

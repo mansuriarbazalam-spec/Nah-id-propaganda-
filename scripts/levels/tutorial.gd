@@ -12,6 +12,34 @@ func _ready() -> void:
 func _on_level_ready() -> void:
 	# Tutorial-specific setup: fade in prompts sequentially or on trigger
 	_setup_tutorial_triggers()
+	_setup_torch_animations()
+
+
+func _setup_torch_animations() -> void:
+	# Build a shared SpriteFrames resource for the flickering-torch animation
+	# and attach it to every AnimatedSprite2D under Decorations whose name
+	# starts with "Torch".
+	var torch_tex: Texture2D = load("res://assets/props/torch_sheet.png")
+	if torch_tex == null:
+		return
+	var sf := SpriteFrames.new()
+	sf.add_animation("flicker")
+	sf.set_animation_speed("flicker", 12.0)
+	sf.set_animation_loop("flicker", true)
+	# 96x64 sheet → 6 horizontal frames of 16x64
+	for i in 6:
+		var at := AtlasTexture.new()
+		at.atlas = torch_tex
+		at.region = Rect2(i * 16, 0, 16, 64)
+		sf.add_frame("flicker", at)
+
+	var decor := get_node_or_null("Decorations")
+	if decor == null:
+		return
+	for child in decor.get_children():
+		if child is AnimatedSprite2D and child.name.begins_with("Torch"):
+			child.sprite_frames = sf
+			child.play("flicker")
 
 
 func _setup_tutorial_triggers() -> void:

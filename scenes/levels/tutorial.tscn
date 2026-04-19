@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctutorial001"]
+[gd_scene load_steps=21 format=3 uid="uid://ctutorial001"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
 [ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
@@ -8,6 +8,15 @@
 [ext_resource type="Texture2D" path="res://assets/backgrounds/church_column.png" id="6_column"]
 [ext_resource type="FontFile" path="res://assets/fonts/PirataOne.ttf" id="7_pirata"]
 [ext_resource type="Texture2D" path="res://assets/ui/light_falloff.png" id="8_light"]
+[ext_resource type="Texture2D" path="res://assets/props/statue.png" id="9_statue"]
+[ext_resource type="Texture2D" path="res://assets/props/tombstone_1.png" id="10_tomb1"]
+[ext_resource type="Texture2D" path="res://assets/props/tombstone_2.png" id="11_tomb2"]
+[ext_resource type="Texture2D" path="res://assets/props/tombstone_3.png" id="12_tomb3"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_2.png" id="13_tree2"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_3.png" id="14_tree3"]
+[ext_resource type="Texture2D" path="res://assets/props/gothic_window_3.png" id="15_window3"]
+[ext_resource type="Texture2D" path="res://assets/props/gothic_window_5.png" id="16_window5"]
+[ext_resource type="Texture2D" path="res://assets/props/torch_sheet.png" id="17_torch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(960, 16)
@@ -119,29 +128,137 @@ position = Vector2(960, 270)
 
 [node name="Decorations" type="Node2D" parent="."]
 
+[node name="BGWindow1" type="Sprite2D" parent="Decorations"]
+position = Vector2(160, 110)
+scale = Vector2(0.4, 0.4)
+modulate = Color(0.9, 0.55, 0.35, 0.55)
+texture = ExtResource("15_window3")
+
+[node name="BGWindow2" type="Sprite2D" parent="Decorations"]
+position = Vector2(480, 110)
+scale = Vector2(0.4, 0.4)
+modulate = Color(0.75, 0.45, 0.55, 0.55)
+texture = ExtResource("16_window5")
+
+[node name="BGWindow3" type="Sprite2D" parent="Decorations"]
+position = Vector2(800, 110)
+scale = Vector2(0.4, 0.4)
+modulate = Color(0.9, 0.55, 0.35, 0.55)
+texture = ExtResource("15_window3")
+
+[node name="TreeLeft" type="Sprite2D" parent="Decorations"]
+position = Vector2(-20, 195)
+scale = Vector2(0.55, 0.55)
+modulate = Color(0.25, 0.18, 0.22, 1)
+texture = ExtResource("14_tree3")
+
+[node name="TreeMid" type="Sprite2D" parent="Decorations"]
+position = Vector2(420, 200)
+scale = Vector2(0.45, 0.45)
+modulate = Color(0.22, 0.15, 0.2, 1)
+texture = ExtResource("13_tree2")
+
+[node name="TreeRight" type="Sprite2D" parent="Decorations"]
+position = Vector2(900, 195)
+scale = Vector2(0.55, 0.55)
+modulate = Color(0.25, 0.18, 0.22, 1)
+texture = ExtResource("14_tree3")
+
 [node name="Column1" type="Sprite2D" parent="Decorations"]
-position = Vector2(80, 150)
-scale = Vector2(0.4, 0.5)
-modulate = Color(0.35, 0.28, 0.32, 1)
+position = Vector2(95, 150)
+scale = Vector2(0.5, 0.6)
+modulate = Color(0.45, 0.35, 0.4, 1)
 texture = ExtResource("6_column")
 
 [node name="Column2" type="Sprite2D" parent="Decorations"]
-position = Vector2(280, 150)
-scale = Vector2(0.4, 0.5)
-modulate = Color(0.3, 0.24, 0.28, 1)
+position = Vector2(300, 150)
+scale = Vector2(0.5, 0.6)
+modulate = Color(0.38, 0.28, 0.33, 1)
 texture = ExtResource("6_column")
 
 [node name="Column3" type="Sprite2D" parent="Decorations"]
-position = Vector2(580, 150)
-scale = Vector2(0.4, 0.5)
-modulate = Color(0.35, 0.28, 0.32, 1)
+position = Vector2(600, 150)
+scale = Vector2(0.5, 0.6)
+modulate = Color(0.45, 0.35, 0.4, 1)
 texture = ExtResource("6_column")
 
 [node name="Column4" type="Sprite2D" parent="Decorations"]
-position = Vector2(820, 150)
-scale = Vector2(0.4, 0.5)
-modulate = Color(0.3, 0.24, 0.28, 1)
+position = Vector2(850, 150)
+scale = Vector2(0.5, 0.6)
+modulate = Color(0.38, 0.28, 0.33, 1)
 texture = ExtResource("6_column")
+
+[node name="Statue1" type="Sprite2D" parent="Decorations"]
+position = Vector2(230, 208)
+scale = Vector2(0.9, 0.9)
+modulate = Color(0.55, 0.5, 0.55, 1)
+texture = ExtResource("9_statue")
+
+[node name="Statue2" type="Sprite2D" parent="Decorations"]
+position = Vector2(740, 208)
+scale = Vector2(0.9, 0.9)
+modulate = Color(0.55, 0.5, 0.55, 1)
+texture = ExtResource("9_statue")
+
+[node name="Tomb1" type="Sprite2D" parent="Decorations"]
+position = Vector2(120, 234)
+modulate = Color(0.55, 0.5, 0.55, 1)
+texture = ExtResource("10_tomb1")
+
+[node name="Tomb2" type="Sprite2D" parent="Decorations"]
+position = Vector2(380, 234)
+modulate = Color(0.5, 0.45, 0.5, 1)
+texture = ExtResource("11_tomb2")
+
+[node name="Tomb3" type="Sprite2D" parent="Decorations"]
+position = Vector2(670, 234)
+modulate = Color(0.55, 0.5, 0.55, 1)
+texture = ExtResource("12_tomb3")
+
+[node name="Tomb4" type="Sprite2D" parent="Decorations"]
+position = Vector2(870, 234)
+modulate = Color(0.5, 0.45, 0.5, 1)
+texture = ExtResource("10_tomb1")
+
+[node name="Torch1" type="AnimatedSprite2D" parent="Decorations"]
+position = Vector2(95, 120)
+scale = Vector2(0.8, 0.8)
+
+[node name="Torch1Light" type="PointLight2D" parent="Decorations/Torch1"]
+color = Color(1.0, 0.55, 0.2, 1)
+energy = 1.8
+texture = ExtResource("8_light")
+texture_scale = 1.0
+
+[node name="Torch2" type="AnimatedSprite2D" parent="Decorations"]
+position = Vector2(300, 120)
+scale = Vector2(0.8, 0.8)
+
+[node name="Torch2Light" type="PointLight2D" parent="Decorations/Torch2"]
+color = Color(1.0, 0.55, 0.2, 1)
+energy = 1.8
+texture = ExtResource("8_light")
+texture_scale = 1.0
+
+[node name="Torch3" type="AnimatedSprite2D" parent="Decorations"]
+position = Vector2(600, 120)
+scale = Vector2(0.8, 0.8)
+
+[node name="Torch3Light" type="PointLight2D" parent="Decorations/Torch3"]
+color = Color(1.0, 0.55, 0.2, 1)
+energy = 1.8
+texture = ExtResource("8_light")
+texture_scale = 1.0
+
+[node name="Torch4" type="AnimatedSprite2D" parent="Decorations"]
+position = Vector2(850, 120)
+scale = Vector2(0.8, 0.8)
+
+[node name="Torch4Light" type="PointLight2D" parent="Decorations/Torch4"]
+color = Color(1.0, 0.55, 0.2, 1)
+energy = 1.8
+texture = ExtResource("8_light")
+texture_scale = 1.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
