@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctutorial001"]
+[gd_scene load_steps=11 format=3 uid="uid://ctutorial001"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial.gd" id="1_tutorial"]
 [ext_resource type="PackedScene" uid="uid://csoldier001" path="res://scenes/enemies/propaganda_soldier.tscn" id="2_soldier"]
 [ext_resource type="PackedScene" uid="uid://cmachine001" path="res://scenes/objects/propaganda_machine.tscn" id="3_machine"]
 [ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/objects/npc.tscn" id="4_npc"]
 [ext_resource type="PackedScene" uid="uid://ccheckpt001" path="res://scenes/objects/checkpoint.tscn" id="5_checkpoint"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/church_column.png" id="6_column"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(960, 16)
@@ -26,7 +27,7 @@ offset_left = -48.0
 offset_top = -270.0
 offset_right = 960.0
 offset_bottom = 270.0
-color = Color(0.06, 0.05, 0.1, 1)
+color = Color(0.03, 0.02, 0.04, 1)
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -40,7 +41,7 @@ offset_left = -480.0
 offset_top = -8.0
 offset_right = 480.0
 offset_bottom = 8.0
-color = Color(0.18, 0.18, 0.22, 1)
+color = Color(0.09, 0.06, 0.09, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -55,7 +56,7 @@ offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
 offset_bottom = 4.0
-color = Color(0.22, 0.22, 0.28, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -70,7 +71,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.22, 0.22, 0.28, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -85,7 +86,7 @@ offset_left = -32.0
 offset_top = -4.0
 offset_right = 32.0
 offset_bottom = 4.0
-color = Color(0.22, 0.22, 0.28, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -100,7 +101,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.22, 0.22, 0.28, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -113,6 +114,32 @@ position = Vector2(0, 0)
 
 [node name="CameraLimitMax" type="Marker2D" parent="."]
 position = Vector2(960, 270)
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Column1" type="Sprite2D" parent="Decorations"]
+position = Vector2(80, 150)
+scale = Vector2(0.4, 0.5)
+modulate = Color(0.35, 0.28, 0.32, 1)
+texture = ExtResource("6_column")
+
+[node name="Column2" type="Sprite2D" parent="Decorations"]
+position = Vector2(280, 150)
+scale = Vector2(0.4, 0.5)
+modulate = Color(0.3, 0.24, 0.28, 1)
+texture = ExtResource("6_column")
+
+[node name="Column3" type="Sprite2D" parent="Decorations"]
+position = Vector2(580, 150)
+scale = Vector2(0.4, 0.5)
+modulate = Color(0.35, 0.28, 0.32, 1)
+texture = ExtResource("6_column")
+
+[node name="Column4" type="Sprite2D" parent="Decorations"]
+position = Vector2(820, 150)
+scale = Vector2(0.4, 0.5)
+modulate = Color(0.3, 0.24, 0.28, 1)
+texture = ExtResource("6_column")
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -239,11 +266,16 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="ExitVisual" type="ColorRect" parent="LevelExit"]
-offset_left = -8.0
-offset_top = -16.0
-offset_right = 8.0
-offset_bottom = 16.0
-color = Color(0.2, 0.8, 0.4, 1)
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 20.0
+color = Color(0.7, 0.55, 0.2, 0.4)
+
+[node name="ExitGlow" type="PointLight2D" parent="LevelExit"]
+color = Color(1.0, 0.82, 0.45, 1)
+energy = 1.2
+texture_scale = 0.4
 
 [node name="ExitLabel" type="Label" parent="LevelExit"]
 offset_left = -16.0

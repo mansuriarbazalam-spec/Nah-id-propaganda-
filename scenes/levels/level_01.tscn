@@ -50,7 +50,7 @@ offset_left = -300.0
 offset_top = -8.0
 offset_right = 300.0
 offset_bottom = 8.0
-color = Color(0.15, 0.15, 0.2, 1)
+color = Color(0.09, 0.06, 0.09, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground1"]
 shape = SubResource("RectangleShape2D_ground1")
@@ -67,7 +67,7 @@ offset_left = -250.0
 offset_top = -8.0
 offset_right = 250.0
 offset_bottom = 8.0
-color = Color(0.15, 0.15, 0.2, 1)
+color = Color(0.09, 0.06, 0.09, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground2"]
 shape = SubResource("RectangleShape2D_ground2")
@@ -82,7 +82,7 @@ offset_left = -120.0
 offset_top = -8.0
 offset_right = 120.0
 offset_bottom = 8.0
-color = Color(0.15, 0.15, 0.2, 1)
+color = Color(0.09, 0.06, 0.09, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground3"]
 shape = SubResource("RectangleShape2D_plat_lg")
@@ -97,7 +97,7 @@ offset_left = -40.0
 offset_top = -4.0
 offset_right = 40.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath1"]
 shape = SubResource("RectangleShape2D_plat_md")
@@ -112,7 +112,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath2"]
 shape = SubResource("RectangleShape2D_plat_sm")
@@ -127,7 +127,7 @@ offset_left = -60.0
 offset_top = -4.0
 offset_right = 60.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/UpperPath3"]
 shape = SubResource("RectangleShape2D_plat_lg")
@@ -142,7 +142,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform1"]
 shape = SubResource("RectangleShape2D_plat_sm")
@@ -157,7 +157,7 @@ offset_left = -40.0
 offset_top = -4.0
 offset_right = 40.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/MidPlatform2"]
 shape = SubResource("RectangleShape2D_plat_md")
@@ -172,7 +172,7 @@ offset_left = -24.0
 offset_top = -4.0
 offset_right = 24.0
 offset_bottom = 4.0
-color = Color(0.2, 0.2, 0.26, 1)
+color = Color(0.14, 0.09, 0.12, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/HighPlatform"]
 shape = SubResource("RectangleShape2D_plat_sm")
@@ -293,7 +293,7 @@ offset_left = -8.0
 offset_top = -16.0
 offset_right = 8.0
 offset_bottom = 16.0
-color = Color(0.2, 0.8, 0.4, 1)
+color = Color(0.7, 0.55, 0.2, 0.4)
 
 [node name="ExitLabel" type="Label" parent="LevelExit"]
 offset_left = -16.0
