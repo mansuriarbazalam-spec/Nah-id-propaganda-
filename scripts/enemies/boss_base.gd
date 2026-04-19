@@ -94,7 +94,7 @@ func _face_player() -> void:
 		return
 	if current_state in [BossState.HURT, BossState.DEFEATED, BossState.PHASE_TRANSITION]:
 		return
-	var dir := sign(player_ref.global_position.x - global_position.x)
+	var dir: float = sign(player_ref.global_position.x - global_position.x)
 	if dir != 0:
 		facing_direction = int(dir)
 	_update_visual_facing()

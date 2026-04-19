@@ -124,7 +124,7 @@ func _process_idle(_delta: float) -> void:
 
 	# Slowly move toward player
 	if is_instance_valid(player_ref) and not player_ref.is_dead:
-		var dir := sign(player_ref.global_position.x - global_position.x)
+		var dir: float = sign(player_ref.global_position.x - global_position.x)
 		var spd := move_speed
 		if current_phase >= 2:
 			spd *= PHASE2_MOVE_SPEED_MULT
@@ -241,7 +241,7 @@ func _attack_decree_dash() -> void:
 	_dash_target = player_ref.global_position
 
 	var dash_speed := PHASE1_DASH_SPEED if current_phase == 1 else PHASE2_DASH_SPEED
-	var dir := sign(_dash_target.x - global_position.x)
+	var dir: float = sign(_dash_target.x - global_position.x)
 	velocity.x = dir * dash_speed
 
 	# Dash for a fixed duration or until hitting a wall

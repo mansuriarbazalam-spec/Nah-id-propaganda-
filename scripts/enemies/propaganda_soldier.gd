@@ -57,7 +57,7 @@ func _state_chase(_delta: float) -> void:
 		return
 
 	# Charge toward player at faster speed
-	var dir := sign(player_ref.global_position.x - global_position.x)
+	var dir: float = sign(player_ref.global_position.x - global_position.x)
 	facing_direction = int(dir) if dir != 0 else facing_direction
 	velocity.x = dir * speed * charge_speed_multiplier
 

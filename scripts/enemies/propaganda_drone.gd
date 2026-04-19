@@ -91,7 +91,7 @@ func _state_patrol(_delta: float) -> void:
 	else:
 		target_x = _spawn_position.x - patrol_distance
 
-	var dir := sign(target_x - global_position.x)
+	var dir: float = sign(target_x - global_position.x)
 	velocity.x = dir * speed * 0.5
 	facing_direction = int(dir) if dir != 0 else facing_direction
 
@@ -114,7 +114,7 @@ func _state_chase(_delta: float) -> void:
 		return
 
 	# Move horizontally toward player, staying above them
-	var dir := sign(player_ref.global_position.x - global_position.x)
+	var dir: float = sign(player_ref.global_position.x - global_position.x)
 	facing_direction = int(dir) if dir != 0 else facing_direction
 	velocity.x = dir * speed * 0.7
 

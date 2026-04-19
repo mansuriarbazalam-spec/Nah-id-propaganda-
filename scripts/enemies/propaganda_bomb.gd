@@ -5,7 +5,7 @@ extends Area2D
 ## world contact. Self-destructs after a timeout.
 
 @export var sanity_damage: float = 15.0
-@export var gravity: float = 400.0
+@export var fall_gravity: float = 400.0
 @export var lifetime: float = 5.0
 @export var splash_radius: float = 24.0
 @export var initial_velocity: Vector2 = Vector2.ZERO
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# Apply gravity
-	_velocity.y += gravity * delta
+	_velocity.y += fall_gravity * delta
 
 	# Move
 	position += _velocity * delta

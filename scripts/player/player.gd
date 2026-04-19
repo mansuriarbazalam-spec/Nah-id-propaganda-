@@ -299,7 +299,7 @@ func take_damage(amount: float, source_position: Vector2 = global_position) -> v
 
 	# Check if clarity shield is absorbing damage
 	if clarity_shield and clarity_shield.has_method("is_shield_active") and clarity_shield.is_shield_active():
-		var reduced := clarity_shield.absorb_damage(amount)
+		var reduced: float = clarity_shield.absorb_damage(amount)
 		amount = reduced
 		if amount <= 0.0:
 			return
