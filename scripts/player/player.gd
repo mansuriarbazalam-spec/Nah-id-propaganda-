@@ -27,7 +27,7 @@ const HURT_INVINCIBILITY: float = 0.8  # seconds of i-frames after being hit
 const PROJECTILE_SCENE: PackedScene = preload("res://scenes/player/projectile.tscn")
 
 # ── Node references ─────────────────────────────────────────────────
-@onready var sprite: ColorRect = $PlayerVisual
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var melee_attack_area: Area2D = $MeleeAttackArea
@@ -62,6 +62,10 @@ var current_anim: String = ""
 
 func _ready() -> void:
 	add_to_group("player")
+
+	# Build pixel-art animations for the hero
+	animated_sprite.sprite_frames = _build_sprite_frames()
+	animated_sprite.play("idle")
 
 	# Connect coyote timer
 	coyote_timer.wait_time = COYOTE_TIME
@@ -125,10 +129,10 @@ func _update_timers(delta: float) -> void:
 		if invincibility_timer <= 0.0:
 			is_invincible = false
 			# Restore full visibility
-			sprite.modulate.a = 1.0
+			animated_sprite.modulate.a = 1.0
 		else:
 			# Flash effect during i-frames
-			sprite.modulate.a = 0.4 if fmod(invincibility_timer, 0.15) < 0.075 else 1.0
+			animated_sprite.modulate.a = 0.4 if fmod(invincibility_timer, 0.15) < 0.075 else 1.0
 
 
 # ── Gravity ─────────────────────────────────────────────────────────
@@ -285,7 +289,7 @@ func _update_facing() -> void:
 		facing_direction = 1 if input_dir > 0.0 else -1
 
 	# Flip visuals and hitboxes
-	sprite.scale.x = abs(sprite.scale.x) * facing_direction
+	animated_sprite.flip_h = (facing_direction < 0)
 
 	# Move melee area to face direction
 	melee_attack_area.position.x = abs(melee_attack_area.position.x) * facing_direction
@@ -377,8 +381,33 @@ func _play_animation(anim_name: String) -> void:
 	if current_anim == anim_name:
 		return
 	current_anim = anim_name
-	if animation_player.has_animation(anim_name):
-		animation_player.play(anim_name)
+	if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(anim_name):
+		animated_sprite.play(anim_name)
+
+
+func _build_sprite_frames() -> SpriteFrames:
+	var sf := SpriteFrames.new()
+	_add_strip(sf, "idle", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 8.0, true)
+	_add_strip(sf, "run", preload("res://assets/sprites/player/hero_run.png"), 12, 66, 48, 14.0, true)
+	_add_strip(sf, "jump", preload("res://assets/sprites/player/hero_jump.png"), 5, 61, 77, 12.0, false)
+	_add_strip(sf, "fall", preload("res://assets/sprites/player/hero_jump.png"), 5, 61, 77, 6.0, true)
+	_add_strip(sf, "attack_melee", preload("res://assets/sprites/player/hero_attack.png"), 6, 96, 48, 18.0, false)
+	_add_strip(sf, "attack_ranged", preload("res://assets/sprites/player/hero_attack.png"), 6, 96, 48, 18.0, false)
+	# Hurt + death reuse idle; modulate/fade effects will sell it
+	_add_strip(sf, "hurt", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 8.0, true)
+	_add_strip(sf, "death", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 4.0, false)
+	return sf
+
+
+func _add_strip(sf: SpriteFrames, anim: String, tex: Texture2D, count: int, fw: int, fh: int, fps: float, loop: bool) -> void:
+	sf.add_animation(anim)
+	sf.set_animation_speed(anim, fps)
+	sf.set_animation_loop(anim, loop)
+	for i in count:
+		var at := AtlasTexture.new()
+		at.atlas = tex
+		at.region = Rect2(i * fw, 0, fw, fh)
+		sf.add_frame(anim, at)
 
 
 func _update_animation() -> void:

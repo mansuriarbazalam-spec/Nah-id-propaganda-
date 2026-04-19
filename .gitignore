@@ -23,3 +23,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.code-workspace
+
+# Downloaded source assets (we keep the processed ones in assets/)
+_downloads/
