@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://game_over_001"]
+[gd_scene load_steps=7 format=3 uid="uid://game_over_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_game_over"]
+[ext_resource type="Theme" path="res://assets/themes/gothic_theme.tres" id="2_theme"]
+[ext_resource type="FontFile" path="res://assets/fonts/UnifrakturCook-Bold.ttf" id="3_unifraktur"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel.ttf" id="4_cinzel"]
+[ext_resource type="Texture2D" path="res://assets/ui/divider_fade.png" id="5_divider"]
+[ext_resource type="PackedScene" path="res://scenes/effects/post_process.tscn" id="6_post_process"]
 
 [node name="GameOver" type="Control"]
 process_mode = 3
@@ -10,16 +15,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 script = ExtResource("1_game_over")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="DarkBase" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08, 0, 0, 0.8)
+mouse_filter = 2
+color = Color(0.012, 0.004, 0.02, 1)
+
+[node name="BloodWash" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.169, 0.02, 0.02, 0.28)
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -28,39 +55,69 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 8
+alignment = 1
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.1, 0.1, 1)
-theme_override_font_sizes/font_size = 22
-text = "YOUR MIND IS LOST"
+theme_override_colors/font_color = Color(0.541, 0.102, 0.102, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_colors/font_outline_color = Color(0.11, 0.02, 0.02, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_unifraktur")
+theme_override_font_sizes/font_size = 80
+text = "You Died"
 horizontal_alignment = 1
+
+[node name="DividerRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Divider" type="TextureRect" parent="CenterContainer/VBoxContainer/DividerRow"]
+custom_minimum_size = Vector2(220, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+modulate = Color(0.631, 0.102, 0.102, 0.75)
+texture = ExtResource("5_divider")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.4, 0.4, 1)
-theme_override_font_sizes/font_size = 9
-text = "The propaganda has consumed you..."
+theme_override_colors/font_color = Color(0.416, 0.333, 0.333, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("4_cinzel")
+theme_override_font_sizes/font_size = 18
+text = "Sanity reclaimed you."
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-custom_minimum_size = Vector2(0, 12)
 
 [node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 36)
 layout_mode = 2
-custom_minimum_size = Vector2(140, 24)
-theme_override_font_sizes/font_size = 10
-text = "Retry"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "Restart"
 
 [node name="QuitToMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 36)
 layout_mode = 2
-custom_minimum_size = Vector2(140, 24)
-theme_override_font_sizes/font_size = 10
-text = "Quit to Menu"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "Return to Menu"
+
+[node name="PostProcess" parent="." instance=ExtResource("6_post_process")]

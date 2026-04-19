@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://main_menu_001"]
+[gd_scene load_steps=9 format=3 uid="uid://main_menu_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
+[ext_resource type="Theme" path="res://assets/themes/gothic_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/title_screen.png" id="3_title_bg"]
+[ext_resource type="Texture2D" path="res://assets/ui/divider_fade.png" id="4_divider"]
+[ext_resource type="FontFile" path="res://assets/fonts/UnifrakturCook-Bold.ttf" id="5_unifraktur"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel.ttf" id="6_cinzel"]
+[ext_resource type="PackedScene" path="res://scenes/effects/post_process.tscn" id="7_post_process"]
+
+[sub_resource type="Gradient" id="Gradient_vignette"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.04, 0.027, 0.06, 0.4, 0.02, 0.012, 0.031, 0.95)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,89 +19,181 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 script = ExtResource("1_main_menu")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="DarkBase" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.06, 0.05, 0.08, 1)
+mouse_filter = 2
+color = Color(0.02, 0.012, 0.031, 1)
 
-[node name="PropagandaDecor" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7
-anchor_top = 0.1
-anchor_right = 0.95
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.12, 0.08, 0.1, 0.3)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+modulate = Color(0.416, 0.314, 0.314, 1)
+texture = ExtResource("3_title_bg")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.012, 0.031, 0.55)
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TopShadow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.02, 0.012, 0.031, 0.65)
+
+[node name="BottomShadow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.02, 0.012, 0.031, 0.7)
+
+[node name="TitleGroup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 22.0
+offset_bottom = 100.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TitleGroup"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.15, 0.15, 1)
-theme_override_font_sizes/font_size = 32
-text = "NAH AD PROPAGANDA"
+theme_override_colors/font_color = Color(0.631, 0.102, 0.102, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_colors/font_outline_color = Color(0.11, 0.063, 0.082, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_unifraktur")
+theme_override_font_sizes/font_size = 40
+text = "Nah Ad Propaganda"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="DividerContainer" type="HBoxContainer" parent="TitleGroup"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.55, 0.65, 1)
-theme_override_font_sizes/font_size = 10
+alignment = 1
+
+[node name="Divider" type="TextureRect" parent="TitleGroup/DividerContainer"]
+custom_minimum_size = Vector2(200, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+modulate = Color(0.788, 0.659, 0.302, 0.95)
+texture = ExtResource("4_divider")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubtitleLabel" type="Label" parent="TitleGroup"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.788, 0.659, 0.302, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 14
 text = "Reclaim Your Mind"
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 16)
+[node name="MenuAnchor" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="NewGameButton" type="Button" parent="CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="ButtonColumn" type="VBoxContainer" parent="MenuAnchor"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 28)
-theme_override_font_sizes/font_size = 12
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="MenuAnchor/ButtonColumn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "New Game"
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="MenuAnchor/ButtonColumn"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
-custom_minimum_size = Vector2(160, 28)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Continue"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MenuAnchor/ButtonColumn"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
-custom_minimum_size = Vector2(160, 28)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MenuAnchor/ButtonColumn"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
-custom_minimum_size = Vector2(160, 28)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MenuAnchor/ButtonColumn"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
 layout_mode = 2
-custom_minimum_size = Vector2(160, 28)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Quit"
+
+[node name="FooterLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.55, 0.5, 0.44, 0.8)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 10
+text = "v0.1  —  a pilgrimage against propaganda"
+horizontal_alignment = 1
+
+[node name="PostProcess" parent="." instance=ExtResource("7_post_process")]

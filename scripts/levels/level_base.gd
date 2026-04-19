@@ -9,6 +9,8 @@ class_name LevelBase
 @export var player_scene_path: String = "res://scenes/player/player.tscn"
 @export var hud_scene_path: String = "res://scenes/ui/hud.tscn"
 @export var parallax_scene_path: String = "res://scenes/levels/parallax_city.tscn"
+@export var post_process_scene_path: String = "res://scenes/effects/post_process.tscn"
+@export var ambient_music_path: String = "res://assets/audio/music/dark_ambient_loop.ogg"
 
 var player: CharacterBody2D = null
 var hud: CanvasLayer = null
@@ -31,8 +33,30 @@ func _ready() -> void:
 	_spawn_player()
 	_setup_hud()
 	_setup_camera_limits()
+	_setup_post_process()
+	_setup_ambience()
 	_connect_level_exit()
 	_on_level_ready()
+
+
+# ── Post-processing (vignette / grain / color grading) ──────────────
+func _setup_post_process() -> void:
+	if not ResourceLoader.exists(post_process_scene_path):
+		return
+	var pp_scene: PackedScene = load(post_process_scene_path)
+	var pp := pp_scene.instantiate()
+	add_child(pp)
+
+
+# ── Ambient music ───────────────────────────────────────────────────
+func _setup_ambience() -> void:
+	if ambient_music_path == "":
+		return
+	if not ResourceLoader.exists(ambient_music_path):
+		return
+	var am := get_node_or_null("/root/AudioManager")
+	if am and am.has_method("play_ambient"):
+		am.play_ambient(ambient_music_path, 2.5)
 
 
 ## Override in subclasses for level-specific setup.

@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://victory_screen_001"]
+[gd_scene load_steps=8 format=3 uid="uid://victory_screen_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/victory_screen.gd" id="1_victory"]
+[ext_resource type="Theme" path="res://assets/themes/gothic_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/castle_bg.png" id="3_castle_bg"]
+[ext_resource type="Texture2D" path="res://assets/ui/divider_fade.png" id="4_divider"]
+[ext_resource type="FontFile" path="res://assets/fonts/UnifrakturCook-Bold.ttf" id="5_unifraktur"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel.ttf" id="6_cinzel"]
+[ext_resource type="PackedScene" path="res://scenes/effects/post_process.tscn" id="7_post_process"]
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3
@@ -9,49 +15,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 script = ExtResource("1_victory")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="DarkBase" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.03, 0.06, 1)
+mouse_filter = 2
+color = Color(0.039, 0.027, 0.063, 1)
 
-[node name="GoldAccent" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.06
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.85, 0.7, 0.2, 0.6)
+mouse_filter = 2
+modulate = Color(0.267, 0.153, 0.153, 1)
+texture = ExtResource("3_castle_bg")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="GoldAccentBottom" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.94
-anchor_right = 0.9
-anchor_bottom = 0.95
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.85, 0.7, 0.2, 0.6)
+mouse_filter = 2
+color = Color(0.039, 0.027, 0.063, 0.55)
 
-[node name="GreenGlow" type="ColorRect" parent="."]
+[node name="TopShadow" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.12
-anchor_right = 0.8
-anchor_bottom = 0.13
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2, 0.8, 0.2, 0.3)
+mouse_filter = 2
+color = Color(0.039, 0.027, 0.063, 0.75)
+
+[node name="BottomShadow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.039, 0.027, 0.063, 0.78)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -60,74 +79,119 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 6
+alignment = 1
 
 [node name="VictoryLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.2, 1)
-theme_override_font_sizes/font_size = 48
-text = "VICTORY"
+theme_override_colors/font_color = Color(0.851, 0.765, 0.408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_colors/font_outline_color = Color(0.11, 0.063, 0.02, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_unifraktur")
+theme_override_font_sizes/font_size = 64
+text = "Victory"
 horizontal_alignment = 1
+
+[node name="DividerRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Divider" type="TextureRect" parent="CenterContainer/VBoxContainer/DividerRow"]
+custom_minimum_size = Vector2(240, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+modulate = Color(0.788, 0.659, 0.302, 0.95)
+texture = ExtResource("4_divider")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.65, 0.75, 1)
-theme_override_font_sizes/font_size = 14
-text = "The Propaganda Lieutenant has fallen."
+theme_override_colors/font_color = Color(0.843, 0.788, 0.659, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+text = "The lieutenant falls. More wait beyond."
 horizontal_alignment = 1
 
 [node name="MindClearLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.843, 0.788, 0.659, 0.88)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 13
 text = "Your mind remains clear."
 horizontal_alignment = 1
 
 [node name="Spacer1" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
-custom_minimum_size = Vector2(0, 20)
 
 [node name="DemoCompleteLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.7, 0.2, 1)
-theme_override_font_sizes/font_size = 20
-text = "DEMO COMPLETE"
+theme_override_colors/font_color = Color(0.851, 0.765, 0.408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_colors/font_outline_color = Color(0.11, 0.063, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_unifraktur")
+theme_override_font_sizes/font_size = 24
+text = "Demo Complete"
 horizontal_alignment = 1
 
 [node name="ContinueMessageLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.55, 0.65, 1)
-theme_override_font_sizes/font_size = 10
-text = "The fight for freedom continues..."
+theme_override_colors/font_color = Color(0.722, 0.635, 0.427, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 12
+text = "The fight for freedom continues."
 horizontal_alignment = 1
 
 [node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-custom_minimum_size = Vector2(0, 24)
 
 [node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="ReturnToMenuButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 36)
 layout_mode = 2
-custom_minimum_size = Vector2(180, 32)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Return to Menu"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 36)
 layout_mode = 2
-custom_minimum_size = Vector2(180, 32)
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
 text = "Quit"
+
+[node name="PostProcess" parent="." instance=ExtResource("7_post_process")]

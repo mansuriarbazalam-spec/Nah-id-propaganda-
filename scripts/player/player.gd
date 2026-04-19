@@ -59,6 +59,22 @@ var ranged_cooldown_timer: float = 0.0
 # ── Animation state ─────────────────────────────────────────────────
 var current_anim: String = ""
 
+# ── Camera shake ────────────────────────────────────────────────────
+var _shake_time_left: float = 0.0
+var _shake_intensity: float = 0.0
+var _camera_base_offset: Vector2 = Vector2.ZERO
+
+# ── Audio paths ─────────────────────────────────────────────────────
+const SFX_SWING: Array[String] = [
+	"res://assets/audio/sfx/melee_swing_01.ogg",
+	"res://assets/audio/sfx/melee_swing_02.ogg",
+]
+const SFX_HIT: String = "res://assets/audio/sfx/melee_hit_01.ogg"
+const SFX_HURT: Array[String] = [
+	"res://assets/audio/sfx/enemy_hurt_01.ogg",
+	"res://assets/audio/sfx/enemy_hurt_02.ogg",
+]
+
 
 func _ready() -> void:
 	add_to_group("player")
@@ -87,6 +103,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_update_camera_shake(delta)
 	if is_dead:
 		return
 
@@ -103,6 +120,26 @@ func _physics_process(delta: float) -> void:
 	var on_floor_before_move := is_on_floor()
 	move_and_slide()
 	_handle_coyote_time(on_floor_before_move)
+
+
+# ── Camera shake ────────────────────────────────────────────────────
+func shake_camera(intensity: float, duration: float) -> void:
+	_shake_intensity = max(_shake_intensity, intensity)
+	_shake_time_left = max(_shake_time_left, duration)
+
+
+func _update_camera_shake(delta: float) -> void:
+	if not camera:
+		return
+	if _shake_time_left > 0.0:
+		_shake_time_left -= delta
+		var mag: float = _shake_intensity * maxf(_shake_time_left / 0.4, 0.0)
+		camera.offset = Vector2(randf_range(-mag, mag), randf_range(-mag, mag))
+		if _shake_time_left <= 0.0:
+			camera.offset = Vector2.ZERO
+			_shake_intensity = 0.0
+	else:
+		camera.offset = camera.offset.lerp(Vector2.ZERO, 15.0 * delta)
 
 
 # ── Timers ──────────────────────────────────────────────────────────
@@ -224,6 +261,9 @@ func _do_melee_attack() -> void:
 	melee_cooldown_timer = MELEE_COOLDOWN
 	_play_animation("attack_melee")
 
+	# Swing SFX
+	_play_random_sfx(SFX_SWING)
+
 	# Enable the melee hitbox briefly
 	_set_melee_hitbox_active(true)
 
@@ -238,17 +278,43 @@ func _do_melee_attack() -> void:
 		is_attacking = false
 
 
+func _play_random_sfx(paths: Array[String]) -> void:
+	if paths.is_empty():
+		return
+	var am := get_node_or_null("/root/AudioManager")
+	if am and am.has_method("play_sfx"):
+		am.play_sfx(paths[randi() % paths.size()])
+
+
 func _apply_melee_damage() -> void:
 	var dmg := MELEE_DAMAGE * SkillTreeManager.melee_damage_multiplier
+	var hit_connected := false
 	var bodies := melee_attack_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage"):
 			body.take_damage(dmg, global_position)
+			hit_connected = true
 
 	var areas := melee_attack_area.get_overlapping_areas()
 	for area in areas:
 		if area.has_method("take_damage"):
 			area.take_damage(dmg, global_position)
+			hit_connected = true
+
+	if hit_connected:
+		# Juice: hit SFX, hit-stop (brief freeze), screen shake
+		var am := get_node_or_null("/root/AudioManager")
+		if am and am.has_method("play_sfx"):
+			am.play_sfx(SFX_HIT)
+		shake_camera(3.0, 0.15)
+		_hit_stop(0.06)
+
+
+func _hit_stop(duration: float) -> void:
+	# Brief time freeze to sell impact
+	Engine.time_scale = 0.05
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0
 
 
 func _do_ranged_attack() -> void:
@@ -312,6 +378,10 @@ func take_damage(amount: float, source_position: Vector2 = global_position) -> v
 	var sm = get_node_or_null("/root/SanityManager")
 	if sm and sm.has_method("take_sanity_damage"):
 		sm.take_sanity_damage(amount)
+
+	# Juice on getting hit: camera shake + hurt SFX
+	shake_camera(6.0, 0.25)
+	_play_random_sfx(SFX_HURT)
 
 	# Knockback
 	var kb_dir := (global_position - source_position).normalized()

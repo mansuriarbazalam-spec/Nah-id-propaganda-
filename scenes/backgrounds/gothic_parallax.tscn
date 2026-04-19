@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://gothic_parallax_001"]
+
+[ext_resource type="Texture2D" uid="uid://cqwukhn5op1wv" path="res://assets/backgrounds/town_bg_far.png" id="1_far"]
+[ext_resource type="Texture2D" uid="uid://kut01vywkds0" path="res://assets/backgrounds/town_bg_mid.png" id="2_mid"]
+[ext_resource type="Texture2D" uid="uid://dgbs4shafmvny" path="res://assets/backgrounds/castle_bg.png" id="3_castle"]
+
+[node name="GothicParallax" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="SkyTop" type="ColorRect" parent="ParallaxBackground/SkyLayer"]
+offset_right = 480.0
+offset_bottom = 135.0
+color = Color(0.039, 0.031, 0.09, 1)
+
+[node name="SkyBottom" type="ColorRect" parent="ParallaxBackground/SkyLayer"]
+offset_top = 135.0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.11, 0.063, 0.125, 1)
+
+[node name="FarLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="FarSprite" type="Sprite2D" parent="ParallaxBackground/FarLayer"]
+modulate = Color(0.227, 0.165, 0.212, 1)
+position = Vector2(0, -18)
+texture = ExtResource("1_far")
+centered = false
+
+[node name="MidLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(384, 0)
+
+[node name="MidSprite" type="Sprite2D" parent="ParallaxBackground/MidLayer"]
+modulate = Color(0.29, 0.188, 0.188, 1)
+position = Vector2(0, -18)
+texture = ExtResource("2_mid")
+centered = false
+
+[node name="CastleLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(480, 0)
+
+[node name="CastleSprite" type="Sprite2D" parent="ParallaxBackground/CastleLayer"]
+modulate = Color(0.235, 0.141, 0.141, 1)
+position = Vector2(0, -66)
+texture = ExtResource("3_castle")
+centered = false
+
+[node name="FogLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.85, 1)
+motion_mirroring = Vector2(480, 0)
+
+[node name="FogStrip" type="ColorRect" parent="ParallaxBackground/FogLayer"]
+offset_left = 0.0
+offset_top = 220.0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.05, 0.03, 0.06, 0.45)
+
+[node name="FogStripDeep" type="ColorRect" parent="ParallaxBackground/FogLayer"]
+offset_left = 0.0
+offset_top = 250.0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.03, 0.02, 0.04, 0.65)
+
+[node name="Embers" type="CPUParticles2D" parent="ParallaxBackground/FogLayer"]
+position = Vector2(240, 260)
+amount = 24
+lifetime = 4.0
+preprocess = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 10)
+gravity = Vector2(0, -18)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(1, 0.6, 0.3, 0.6)
