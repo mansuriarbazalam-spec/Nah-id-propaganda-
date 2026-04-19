@@ -7,9 +7,11 @@ shader_type canvas_item;
 uniform sampler2D screen_tex : hint_screen_texture, repeat_disable, filter_linear_mipmap;
 
 // --- Vignette ---------------------------------------------------------
-uniform float vignette_intensity : hint_range(0.0, 2.0) = 0.45;
-uniform float vignette_softness  : hint_range(0.0, 1.0) = 0.85;
-uniform vec3  vignette_color     : source_color = vec3(0.05, 0.03, 0.04);
+// Smoothstep(outer, inner, length): vig=1 at inner, 0 at outer.
+// Intensity is how much of the original color survives near edges.
+uniform float vignette_intensity : hint_range(0.0, 2.0) = 0.55;
+uniform float vignette_softness  : hint_range(0.0, 1.0) = 0.45;
+uniform vec3  vignette_color     : source_color = vec3(0.08, 0.04, 0.08);
 
 // --- Chromatic aberration --------------------------------------------
 uniform float chromatic_aberration : hint_range(0.0, 0.02) = 0.0018;
@@ -74,8 +76,12 @@ void fragment() {
 	col = mix(vec3(new_luma), col, saturation);
 
 	// --- Vignette -----------------------------------------------------
+	// vig = 1 at center, 0 at corner (smoothstep is reversed)
 	float vig = smoothstep(0.85, vignette_softness, length(centered));
-	col = mix(vignette_color, col, vig * vig * vignette_intensity);
+	// Blend toward vignette_color only in the OUTER area. Clamp intensity
+	// so we can never dye the whole screen if someone fat-fingers uniforms.
+	float tint = clamp((1.0 - vig) * vignette_intensity, 0.0, 1.0);
+	col = mix(col, vignette_color, tint);
 
 	// --- Scanlines ----------------------------------------------------
 	float scan = sin(uv.y * scanline_density) * 0.5 + 0.5;
