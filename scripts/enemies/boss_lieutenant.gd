@@ -20,8 +20,7 @@ const PHASE2_BOMB_SPEED: float = 200.0
 const PHASE2_MOVE_SPEED_MULT: float = 1.4
 
 # -- Node references ----------------------------------------------------------
-@onready var boss_visual: Node2D = $BossVisual
-@onready var body_rect: ColorRect = $BossVisual/Body
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var dialogue_label: Label = $DialogueLabel
 @onready var animation_player_node: AnimationPlayer = $AnimationPlayer
@@ -34,6 +33,7 @@ var _dash_target: Vector2 = Vector2.ZERO
 var _performing_attack: bool = false
 var _available_attacks: Array = []
 var _arena_center: Vector2 = Vector2.ZERO
+var _current_anim: String = ""
 
 
 func _ready() -> void:
@@ -60,8 +60,43 @@ func _ready() -> void:
 
 	_arena_center = global_position
 
+	# Hook up pixel-art animations
+	if is_instance_valid(animated_sprite):
+		animated_sprite.sprite_frames = _build_sprite_frames()
+		_play_anim("idle")
+
 	# Start the fight
 	start_fight()
+
+
+func _build_sprite_frames() -> SpriteFrames:
+	var sf := SpriteFrames.new()
+	_add_strip(sf, "idle", preload("res://assets/sprites/enemies/nightmare_idle.png"), 4, 128, 96, 6.0, true)
+	return sf
+
+
+func _add_strip(sf: SpriteFrames, anim: String, tex: Texture2D, count: int, fw: int, fh: int, fps: float, loop: bool) -> void:
+	sf.add_animation(anim)
+	sf.set_animation_speed(anim, fps)
+	sf.set_animation_loop(anim, loop)
+	for i in count:
+		var at := AtlasTexture.new()
+		at.atlas = tex
+		at.region = Rect2(i * fw, 0, fw, fh)
+		sf.add_frame(anim, at)
+
+
+func _play_anim(anim: String) -> void:
+	if not is_instance_valid(animated_sprite):
+		return
+	if _current_anim == anim:
+		return
+	if animated_sprite.sprite_frames == null:
+		return
+	if not animated_sprite.sprite_frames.has_animation(anim):
+		return
+	_current_anim = anim
+	animated_sprite.play(anim)
 
 
 func _boss_process(delta: float) -> void:
@@ -361,8 +396,8 @@ func _on_phase_transition(new_phase: int) -> void:
 	_hide_dialogue()
 
 	# Apply visual tint for phase 2
-	if body_rect:
-		body_rect.color = Color(0.4, 0.1, 0.1, 1.0)
+	if is_instance_valid(animated_sprite):
+		animated_sprite.self_modulate = Color(1.6, 0.6, 0.6, 1.0)
 
 	current_phase = new_phase
 	_invincible = false
@@ -446,3 +481,11 @@ func _show_dialogue(text: String) -> void:
 func _hide_dialogue() -> void:
 	dialogue_label.text = ""
 	dialogue_label.visible = false
+
+
+# -- Facing override ---------------------------------------------------------
+# Use flip_h on the AnimatedSprite2D instead of scaling the root
+# (scaling the root would also flip collision shapes and area colliders).
+func _update_visual_facing() -> void:
+	if is_instance_valid(animated_sprite) and facing_direction != 0:
+		animated_sprite.flip_h = facing_direction < 0

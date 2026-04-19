@@ -1,13 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://hud_001"]
+[gd_scene load_steps=7 format=3 uid="uid://hud_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="FontFile" path="res://assets/fonts/PirataOne.ttf" id="2_pirata"]
+[ext_resource type="FontFile" path="res://assets/fonts/Cinzel.ttf" id="3_cinzel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sanity_fill"]
-bg_color = Color(0.2, 0.8, 0.2, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+bg_color = Color(0.75, 0.12, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9, 0.35, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sanity_bg"]
+bg_color = Color(0.05, 0.04, 0.06, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.45, 0.2, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boss_fill"]
+bg_color = Color(0.65, 0.08, 0.08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.25, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boss_bg"]
+bg_color = Color(0.03, 0.02, 0.04, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.35, 0.15, 1)
 
 [node name="HUD" type="CanvasLayer"]
 layer = 10
@@ -31,18 +62,33 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 2
 
+[node name="SanityTitle" type="Label" parent="MarginContainer/TopLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.68, 0.22, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("3_cinzel")
+theme_override_font_sizes/font_size = 9
+text = "SANITY"
+
 [node name="SanityLabel" type="Label" parent="MarginContainer/TopLeft"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_pirata")
+theme_override_font_sizes/font_size = 10
 text = "100 / 100"
 
 [node name="SanityBar" type="ProgressBar" parent="MarginContainer/TopLeft"]
 unique_name_in_owner = true
 layout_mode = 2
-custom_minimum_size = Vector2(100, 8)
+custom_minimum_size = Vector2(120, 10)
 theme_override_styles/fill = SubResource("StyleBoxFlat_sanity_fill")
+theme_override_styles/background = SubResource("StyleBoxFlat_sanity_bg")
 max_value = 100.0
 value = 100.0
 show_percentage = false
@@ -50,8 +96,12 @@ show_percentage = false
 [node name="ShieldIndicator" type="Label" parent="MarginContainer/TopLeft"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_colors/font_color = Color(0.55, 0.75, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_pirata")
+theme_override_font_sizes/font_size = 9
 text = "SHIELD: READY"
 
 [node name="TopRight" type="VBoxContainer" parent="MarginContainer"]
@@ -63,7 +113,11 @@ size_flags_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_pirata")
+theme_override_font_sizes/font_size = 10
 text = "Melee"
 horizontal_alignment = 2
 
@@ -77,15 +131,21 @@ theme_override_constants/separation = 1
 [node name="BossNameLabel" type="Label" parent="MarginContainer/BossBarContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(1, 0.45, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_pirata")
+theme_override_font_sizes/font_size = 12
 text = "BOSS NAME"
 horizontal_alignment = 1
 
 [node name="BossBar" type="ProgressBar" parent="MarginContainer/BossBarContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-custom_minimum_size = Vector2(160, 6)
+custom_minimum_size = Vector2(220, 9)
+theme_override_styles/fill = SubResource("StyleBoxFlat_boss_fill")
+theme_override_styles/background = SubResource("StyleBoxFlat_boss_bg")
 max_value = 100.0
 value = 100.0
 show_percentage = false

@@ -10,10 +10,10 @@ extends CanvasLayer
 @onready var boss_bar: ProgressBar = %BossBar
 @onready var boss_name_label: Label = %BossNameLabel
 
-# Sanity bar color thresholds
-const COLOR_HIGH := Color(0.2, 0.8, 0.2)     # Green — healthy
-const COLOR_MEDIUM := Color(0.9, 0.8, 0.1)    # Yellow — caution
-const COLOR_LOW := Color(0.9, 0.15, 0.15)     # Red — danger
+# Sanity bar color thresholds (gothic palette)
+const COLOR_HIGH := Color(0.85, 0.78, 0.55)   # Bone cream — healthy
+const COLOR_MEDIUM := Color(0.85, 0.48, 0.12) # Amber — caution
+const COLOR_LOW := Color(0.75, 0.10, 0.08)    # Blood red — danger
 const MEDIUM_THRESHOLD: float = 50.0
 const LOW_THRESHOLD: float = 25.0
 

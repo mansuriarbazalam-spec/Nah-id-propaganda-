@@ -18,6 +18,8 @@ enum DroneState { PATROL, CHASE, ATTACK, HURT, DEAD }
 
 const BOMB_SCENE_PATH: String = "res://scenes/enemies/propaganda_bomb.tscn"
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var current_state: DroneState = DroneState.PATROL
 var facing_direction: int = 1
 var player_ref: CharacterBody2D = null
@@ -27,6 +29,7 @@ var _bob_time: float = 0.0
 var _hurt_flash_timer: float = 0.0
 var _attack_timer: float = 0.0
 var _bomb_scene: PackedScene = null
+var _current_anim: String = ""
 var knockback_velocity: Vector2 = Vector2.ZERO
 
 
@@ -35,6 +38,41 @@ func _ready() -> void:
 	add_to_group("enemies")
 	_bomb_scene = load(BOMB_SCENE_PATH) as PackedScene
 	_find_player()
+
+	# Hook up pixel-art animations
+	if is_instance_valid(animated_sprite):
+		animated_sprite.sprite_frames = _build_sprite_frames()
+		_play_anim("idle")
+
+
+func _build_sprite_frames() -> SpriteFrames:
+	var sf := SpriteFrames.new()
+	_add_strip(sf, "idle", preload("res://assets/sprites/enemies/fire_skull.png"), 8, 96, 112, 10.0, true)
+	return sf
+
+
+func _add_strip(sf: SpriteFrames, anim: String, tex: Texture2D, count: int, fw: int, fh: int, fps: float, loop: bool) -> void:
+	sf.add_animation(anim)
+	sf.set_animation_speed(anim, fps)
+	sf.set_animation_loop(anim, loop)
+	for i in count:
+		var at := AtlasTexture.new()
+		at.atlas = tex
+		at.region = Rect2(i * fw, 0, fw, fh)
+		sf.add_frame(anim, at)
+
+
+func _play_anim(anim: String) -> void:
+	if not is_instance_valid(animated_sprite):
+		return
+	if _current_anim == anim:
+		return
+	if animated_sprite.sprite_frames == null:
+		return
+	if not animated_sprite.sprite_frames.has_animation(anim):
+		return
+	_current_anim = anim
+	animated_sprite.play(anim)
 
 
 func _physics_process(delta: float) -> void:
@@ -224,5 +262,5 @@ func _find_player() -> void:
 
 
 func _update_visual_facing() -> void:
-	if facing_direction != 0:
-		scale.x = absf(scale.x) * facing_direction
+	if is_instance_valid(animated_sprite) and facing_direction != 0:
+		animated_sprite.flip_h = facing_direction < 0
