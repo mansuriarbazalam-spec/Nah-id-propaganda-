@@ -33,6 +33,11 @@ func _ready() -> void:
 	# Give focus to New Game button for keyboard/gamepad navigation
 	new_game_button.grab_focus()
 
+	# Kick off dark ambient music under the menu
+	var am := get_node_or_null("/root/AudioManager")
+	if am and am.has_method("play_ambient"):
+		am.play_ambient("res://assets/audio/music/dark_ambient_loop.ogg", 3.0)
+
 
 func _on_new_game_pressed() -> void:
 	# Delete any existing save to start fresh
