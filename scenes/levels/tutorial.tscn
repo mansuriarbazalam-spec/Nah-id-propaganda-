@@ -57,7 +57,7 @@ offset_right = 480.0
 offset_bottom = 40.0
 texture = ExtResource("18_ground")
 stretch_mode = 1
-modulate = Color(0.85, 0.72, 0.7, 1)
+modulate = Color(0.72, 0.75, 0.9, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground"]
 shape = SubResource("RectangleShape2D_ground")
@@ -74,7 +74,7 @@ offset_right = 32.0
 offset_bottom = 20.0
 texture = ExtResource("18_ground")
 stretch_mode = 1
-modulate = Color(0.9, 0.78, 0.74, 1)
+modulate = Color(0.78, 0.82, 0.95, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform1"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -91,7 +91,7 @@ offset_right = 24.0
 offset_bottom = 20.0
 texture = ExtResource("18_ground")
 stretch_mode = 1
-modulate = Color(0.9, 0.78, 0.74, 1)
+modulate = Color(0.78, 0.82, 0.95, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2"]
 shape = SubResource("RectangleShape2D_plat2")
@@ -108,7 +108,7 @@ offset_right = 32.0
 offset_bottom = 20.0
 texture = ExtResource("18_ground")
 stretch_mode = 1
-modulate = Color(0.9, 0.78, 0.74, 1)
+modulate = Color(0.78, 0.82, 0.95, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3"]
 shape = SubResource("RectangleShape2D_plat1")
@@ -125,7 +125,7 @@ offset_right = 24.0
 offset_bottom = 20.0
 texture = ExtResource("18_ground")
 stretch_mode = 1
-modulate = Color(0.9, 0.78, 0.74, 1)
+modulate = Color(0.78, 0.82, 0.95, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4"]
 shape = SubResource("RectangleShape2D_plat2")

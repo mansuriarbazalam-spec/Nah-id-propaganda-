@@ -456,28 +456,34 @@ func _play_animation(anim_name: String) -> void:
 
 
 func _build_sprite_frames() -> SpriteFrames:
+	# Player is the "bearded civilian" from Gothicvania Town — a 40x47
+	# middle-aged man in a kurta-style shirt, not a fantasy warrior.
+	# Each animation is a folder of individual PNG frames.
 	var sf := SpriteFrames.new()
-	_add_strip(sf, "idle", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 8.0, true)
-	_add_strip(sf, "run", preload("res://assets/sprites/player/hero_run.png"), 12, 66, 48, 14.0, true)
-	_add_strip(sf, "jump", preload("res://assets/sprites/player/hero_jump.png"), 5, 61, 77, 12.0, false)
-	_add_strip(sf, "fall", preload("res://assets/sprites/player/hero_jump.png"), 5, 61, 77, 6.0, true)
-	_add_strip(sf, "attack_melee", preload("res://assets/sprites/player/hero_attack.png"), 6, 96, 48, 18.0, false)
-	_add_strip(sf, "attack_ranged", preload("res://assets/sprites/player/hero_attack.png"), 6, 96, 48, 18.0, false)
-	# Hurt + death reuse idle; modulate/fade effects will sell it
-	_add_strip(sf, "hurt", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 8.0, true)
-	_add_strip(sf, "death", preload("res://assets/sprites/player/hero_idle.png"), 4, 38, 48, 4.0, false)
+	_add_frames(sf, "idle", "res://assets/sprites/player/bearded/idle_{i}.png", 1, 5, 6.0, true)
+	_add_frames(sf, "run", "res://assets/sprites/player/bearded/walk_{i}.png", 1, 6, 12.0, true)
+	# No jump/fall/attack frames exist for the civilian — reuse idle/walk
+	# pose and lean on motion blur + modulate to sell the action.
+	_add_frames(sf, "jump", "res://assets/sprites/player/bearded/walk_{i}.png", 1, 6, 8.0, false)
+	_add_frames(sf, "fall", "res://assets/sprites/player/bearded/walk_{i}.png", 1, 6, 4.0, true)
+	_add_frames(sf, "attack_melee", "res://assets/sprites/player/bearded/walk_{i}.png", 1, 6, 22.0, false)
+	_add_frames(sf, "attack_ranged", "res://assets/sprites/player/bearded/walk_{i}.png", 1, 6, 22.0, false)
+	_add_frames(sf, "hurt", "res://assets/sprites/player/bearded/idle_{i}.png", 1, 5, 6.0, true)
+	_add_frames(sf, "death", "res://assets/sprites/player/bearded/idle_{i}.png", 1, 5, 3.0, false)
 	return sf
 
 
-func _add_strip(sf: SpriteFrames, anim: String, tex: Texture2D, count: int, fw: int, fh: int, fps: float, loop: bool) -> void:
+func _add_frames(sf: SpriteFrames, anim: String, path_template: String, start: int, count: int, fps: float, loop: bool) -> void:
 	sf.add_animation(anim)
 	sf.set_animation_speed(anim, fps)
 	sf.set_animation_loop(anim, loop)
-	for i in count:
-		var at := AtlasTexture.new()
-		at.atlas = tex
-		at.region = Rect2(i * fw, 0, fw, fh)
-		sf.add_frame(anim, at)
+	for i in range(start, start + count):
+		var p := path_template.replace("{i}", str(i))
+		if not ResourceLoader.exists(p):
+			continue
+		var tex: Texture2D = load(p)
+		if tex:
+			sf.add_frame(anim, tex)
 
 
 func _update_animation() -> void:

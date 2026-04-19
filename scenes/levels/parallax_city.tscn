@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" path="res://assets/props/gothic_window_1.png" id="7_window"]
 
 [sub_resource type="Gradient" id="Gradient_sky"]
-offsets = PackedFloat32Array(0, 0.45, 1)
-colors = PackedColorArray(0.12, 0.06, 0.16, 1, 0.32, 0.12, 0.18, 1, 0.52, 0.24, 0.2, 1)
+offsets = PackedFloat32Array(0, 0.4, 0.75, 1)
+colors = PackedColorArray(0.22, 0.17, 0.36, 1, 0.52, 0.33, 0.46, 1, 0.82, 0.55, 0.52, 1, 0.92, 0.68, 0.55, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sky"]
 gradient = SubResource("Gradient_sky")
@@ -46,7 +46,7 @@ motion_scale = Vector2(0.08, 1)
 motion_mirroring = Vector2(270, 0)
 
 [node name="MountainSprite" type="Sprite2D" parent="MountainLayer"]
-modulate = Color(0.7, 0.6, 0.75, 1)
+modulate = Color(0.48, 0.4, 0.6, 1)
 position = Vector2(0, 180)
 texture = ExtResource("2_mountains")
 centered = false
@@ -56,7 +56,7 @@ motion_scale = Vector2(0.2, 1)
 motion_mirroring = Vector2(256, 0)
 
 [node name="ArchFarSprite" type="Sprite2D" parent="ArchFarLayer"]
-modulate = Color(0.85, 0.72, 0.78, 1)
+modulate = Color(0.62, 0.55, 0.7, 1)
 position = Vector2(0, 40)
 texture = ExtResource("3_arch_far")
 centered = false
@@ -66,7 +66,7 @@ motion_scale = Vector2(0.38, 1)
 motion_mirroring = Vector2(256, 0)
 
 [node name="ArchMidSprite" type="Sprite2D" parent="ArchMidLayer"]
-modulate = Color(1.0, 0.85, 0.78, 1)
+modulate = Color(0.82, 0.7, 0.78, 1)
 position = Vector2(0, 104)
 texture = ExtResource("4_arch_mid")
 centered = false
@@ -76,7 +76,7 @@ motion_scale = Vector2(0.55, 1)
 motion_mirroring = Vector2(624, 0)
 
 [node name="ChurchSprite" type="Sprite2D" parent="ChurchLayer"]
-modulate = Color(1.0, 0.92, 0.75, 1)
+modulate = Color(0.95, 0.78, 0.72, 1)
 position = Vector2(0, 168)
 texture = ExtResource("5_church")
 centered = false
@@ -86,7 +86,7 @@ motion_scale = Vector2(0.78, 1)
 motion_mirroring = Vector2(384, 0)
 
 [node name="GraveyardSprite" type="Sprite2D" parent="GraveyardLayer"]
-modulate = Color(0.75, 0.6, 0.6, 1)
+modulate = Color(0.35, 0.28, 0.4, 1)
 position = Vector2(0, 237)
 texture = ExtResource("6_graveyard")
 centered = false
